@@ -28,15 +28,15 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`27.1.9-apache`, `27.1-apache`, `27-apache`, `27.1.9`, `27.1`, `27`](https://github.com/nextcloud/docker/blob/19417a8eb9b77b2613d64dc997def635d5bb4441/27/apache/Dockerfile)
--	[`27.1.9-fpm`, `27.1-fpm`, `27-fpm`](https://github.com/nextcloud/docker/blob/19417a8eb9b77b2613d64dc997def635d5bb4441/27/fpm/Dockerfile)
--	[`27.1.9-fpm-alpine`, `27.1-fpm-alpine`, `27-fpm-alpine`](https://github.com/nextcloud/docker/blob/19417a8eb9b77b2613d64dc997def635d5bb4441/27/fpm-alpine/Dockerfile)
--	[`28.0.5-apache`, `28.0-apache`, `28-apache`, `stable-apache`, `production-apache`, `28.0.5`, `28.0`, `28`, `stable`, `production`](https://github.com/nextcloud/docker/blob/19417a8eb9b77b2613d64dc997def635d5bb4441/28/apache/Dockerfile)
--	[`28.0.5-fpm`, `28.0-fpm`, `28-fpm`, `stable-fpm`, `production-fpm`](https://github.com/nextcloud/docker/blob/19417a8eb9b77b2613d64dc997def635d5bb4441/28/fpm/Dockerfile)
--	[`28.0.5-fpm-alpine`, `28.0-fpm-alpine`, `28-fpm-alpine`, `stable-fpm-alpine`, `production-fpm-alpine`](https://github.com/nextcloud/docker/blob/19417a8eb9b77b2613d64dc997def635d5bb4441/28/fpm-alpine/Dockerfile)
--	[`29.0.0-apache`, `29.0-apache`, `29-apache`, `apache`, `29.0.0`, `29.0`, `29`, `latest`](https://github.com/nextcloud/docker/blob/f7b20139ebd35daea49138fd15232c5d812f4114/29/apache/Dockerfile)
--	[`29.0.0-fpm`, `29.0-fpm`, `29-fpm`, `fpm`](https://github.com/nextcloud/docker/blob/f7b20139ebd35daea49138fd15232c5d812f4114/29/fpm/Dockerfile)
--	[`29.0.0-fpm-alpine`, `29.0-fpm-alpine`, `29-fpm-alpine`, `fpm-alpine`](https://github.com/nextcloud/docker/blob/f7b20139ebd35daea49138fd15232c5d812f4114/29/fpm-alpine/Dockerfile)
+-	[`27.1.11-apache`, `27.1-apache`, `27-apache`, `27.1.11`, `27.1`, `27`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/27/apache/Dockerfile)
+-	[`27.1.11-fpm`, `27.1-fpm`, `27-fpm`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/27/fpm/Dockerfile)
+-	[`27.1.11-fpm-alpine`, `27.1-fpm-alpine`, `27-fpm-alpine`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/27/fpm-alpine/Dockerfile)
+-	[`28.0.7-apache`, `28.0-apache`, `28-apache`, `28.0.7`, `28.0`, `28`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/28/apache/Dockerfile)
+-	[`28.0.7-fpm`, `28.0-fpm`, `28-fpm`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/28/fpm/Dockerfile)
+-	[`28.0.7-fpm-alpine`, `28.0-fpm-alpine`, `28-fpm-alpine`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/28/fpm-alpine/Dockerfile)
+-	[`29.0.3-apache`, `29.0-apache`, `29-apache`, `apache`, `29.0.3`, `29.0`, `29`, `latest`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/29/apache/Dockerfile)
+-	[`29.0.3-fpm`, `29.0-fpm`, `29-fpm`, `fpm`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/29/fpm/Dockerfile)
+-	[`29.0.3-fpm-alpine`, `29.0-fpm-alpine`, `29-fpm-alpine`, `fpm-alpine`](https://github.com/nextcloud/docker/blob/cd162a43212520628036e13fbfc1aba201139005/29/fpm-alpine/Dockerfile)
 
 # Quick reference (cont.)
 
@@ -44,7 +44,7 @@ WARNING:
 	[https://github.com/nextcloud/docker/issues](https://github.com/nextcloud/docker/issues?q=)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/nextcloud/), [`arm32v5`](https://hub.docker.com/r/arm32v5/nextcloud/), [`arm32v6`](https://hub.docker.com/r/arm32v6/nextcloud/), [`arm32v7`](https://hub.docker.com/r/arm32v7/nextcloud/), [`arm64v8`](https://hub.docker.com/r/arm64v8/nextcloud/), [`i386`](https://hub.docker.com/r/i386/nextcloud/), [`mips64le`](https://hub.docker.com/r/mips64le/nextcloud/), [`ppc64le`](https://hub.docker.com/r/ppc64le/nextcloud/), [`s390x`](https://hub.docker.com/r/s390x/nextcloud/)
+	[`amd64`](https://hub.docker.com/r/amd64/nextcloud/), [`arm32v5`](https://hub.docker.com/r/arm32v5/nextcloud/), [`arm32v6`](https://hub.docker.com/r/arm32v6/nextcloud/), [`arm32v7`](https://hub.docker.com/r/arm32v7/nextcloud/), [`arm64v8`](https://hub.docker.com/r/arm64v8/nextcloud/), [`i386`](https://hub.docker.com/r/i386/nextcloud/), [`mips64le`](https://hub.docker.com/r/mips64le/nextcloud/), [`ppc64le`](https://hub.docker.com/r/ppc64le/nextcloud/), [`riscv64`](https://hub.docker.com/r/riscv64/nextcloud/), [`s390x`](https://hub.docker.com/r/s390x/nextcloud/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/nextcloud/` directory](https://github.com/docker-library/repo-info/blob/master/repos/nextcloud) ([history](https://github.com/docker-library/repo-info/commits/master/repos/nextcloud))  
