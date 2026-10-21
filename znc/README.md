@@ -24,13 +24,14 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.9.0`, `1.9`, `latest`](https://github.com/znc/znc-docker/blob/8638ba43acaef4bff2d4d39668c1992f411230a6/full/Dockerfile)
--	[`1.9.0-slim`, `1.9-slim`, `slim`](https://github.com/znc/znc-docker/blob/8638ba43acaef4bff2d4d39668c1992f411230a6/slim/Dockerfile)
+-	[`1.10.3`, `1.10`, `latest`](https://github.com/znc/znc-docker/blob/26f3980dcc0aba8ee5e9786fd1c08c16959aa6c6/full/Dockerfile)
+
+-	[`1.10.3-slim`, `1.10-slim`, `slim`](https://github.com/znc/znc-docker/blob/26f3980dcc0aba8ee5e9786fd1c08c16959aa6c6/slim/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/znc/znc-docker/issues](https://github.com/znc/znc-docker/issues?q=)
+	[https://github.com/znc/znc-docker/issues](https://github.com/znc/znc-docker/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/znc/), [`arm32v6`](https://hub.docker.com/r/arm32v6/znc/), [`arm64v8`](https://hub.docker.com/r/arm64v8/znc/)

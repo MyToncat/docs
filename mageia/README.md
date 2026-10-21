@@ -24,13 +24,16 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`9`, `latest`](https://github.com/juanluisbaptiste/docker-brew-mageia/blob/a10bfc339af146998ead45d720186eea25f5c990/dist/9/x86_64/Dockerfile)
--	[`cauldron`](https://github.com/juanluisbaptiste/docker-brew-mageia/blob/a10bfc339af146998ead45d720186eea25f5c990/dist/cauldron/x86_64/Dockerfile)
+-	[`10`, `latest`](https://github.com/juanluisbaptiste/docker-brew-mageia/blob/04ad05e8a31e18ec2a4a7087bdd54934266493a3/dist/10/x86_64/Dockerfile)
+
+-	[`9`](https://github.com/juanluisbaptiste/docker-brew-mageia/blob/04ad05e8a31e18ec2a4a7087bdd54934266493a3/dist/9/x86_64/Dockerfile)
+
+-	[`cauldron`](https://github.com/juanluisbaptiste/docker-brew-mageia/blob/04ad05e8a31e18ec2a4a7087bdd54934266493a3/dist/cauldron/x86_64/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/juanluisbaptiste/docker-brew-mageia/issues](https://github.com/juanluisbaptiste/docker-brew-mageia/issues?q=)
+	[https://github.com/juanluisbaptiste/docker-brew-mageia/issues](https://github.com/juanluisbaptiste/docker-brew-mageia/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/mageia/), [`arm32v7`](https://hub.docker.com/r/arm32v7/mageia/), [`arm64v8`](https://hub.docker.com/r/arm64v8/mageia/)

@@ -17,23 +17,28 @@ WARNING:
 # Quick reference
 
 -	**Maintained by**:  
-	[the Docker Community](https://github.com/docker-library/ghost)
+	[Ghost Foundation](https://ghost.org)
 
 -	**Where to get help**:  
 	[the Docker Community Slack](https://dockr.ly/comm-slack), [Server Fault](https://serverfault.com/help/on-topic), [Unix & Linux](https://unix.stackexchange.com/help/on-topic), or [Stack Overflow](https://stackoverflow.com/help/on-topic)
 
 # Supported tags and respective `Dockerfile` links
 
--	[`5.82.2`, `5.82`, `5`, `latest`](https://github.com/docker-library/ghost/blob/ef2cb4a7dbf11d48534ee74d9f15446436af502c/5/debian/Dockerfile)
--	[`5.82.2-alpine`, `5.82-alpine`, `5-alpine`, `alpine`](https://github.com/docker-library/ghost/blob/ef2cb4a7dbf11d48534ee74d9f15446436af502c/5/alpine/Dockerfile)
+-	[`6.72.0-bookworm`, `6.72.0`, `6.72-bookworm`, `6.72`, `6-bookworm`, `6`, `bookworm`, `latest`](https://github.com/TryGhost/docker-library-ghost/blob/f72c6846a6a6358701b81038ddca9e526975dac7/6/bookworm/Dockerfile)
+
+-	[`6.72.0-alpine3.23`, `6.72.0-alpine`, `6.72-alpine3.23`, `6.72-alpine`, `6-alpine3.23`, `6-alpine`, `alpine3.23`, `alpine`](https://github.com/TryGhost/docker-library-ghost/blob/f72c6846a6a6358701b81038ddca9e526975dac7/6/alpine3.23/Dockerfile)
+
+-	[`6.72.0-next-bookworm`, `6.72.0-next`, `6.72-next-bookworm`, `6.72-next`, `6-next-bookworm`, `6-next`, `next-bookworm`, `next`](https://github.com/TryGhost/docker-library-ghost/blob/f72c6846a6a6358701b81038ddca9e526975dac7/6-next/bookworm/Dockerfile)
+
+-	[`6.72.0-next-alpine3.23`, `6.72.0-next-alpine`, `6.72-next-alpine3.23`, `6.72-next-alpine`, `6-next-alpine3.23`, `6-next-alpine`, `next-alpine3.23`, `next-alpine`](https://github.com/TryGhost/docker-library-ghost/blob/f72c6846a6a6358701b81038ddca9e526975dac7/6-next/alpine3.23/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/docker-library/ghost/issues](https://github.com/docker-library/ghost/issues?q=)
+	[https://github.com/TryGhost/docker-library-ghost/issues](https://github.com/TryGhost/docker-library-ghost/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/ghost/), [`arm32v6`](https://hub.docker.com/r/arm32v6/ghost/), [`arm32v7`](https://hub.docker.com/r/arm32v7/ghost/), [`arm64v8`](https://hub.docker.com/r/arm64v8/ghost/), [`ppc64le`](https://hub.docker.com/r/ppc64le/ghost/), [`s390x`](https://hub.docker.com/r/s390x/ghost/)
+	[`amd64`](https://hub.docker.com/r/amd64/ghost/), [`arm32v7`](https://hub.docker.com/r/arm32v7/ghost/), [`arm64v8`](https://hub.docker.com/r/arm64v8/ghost/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/ghost/` directory](https://github.com/docker-library/repo-info/blob/master/repos/ghost) ([history](https://github.com/docker-library/repo-info/commits/master/repos/ghost))  
@@ -48,11 +53,11 @@ WARNING:
 
 # Ghost
 
-Ghost is a free and open source blogging platform written in JavaScript and distributed under the MIT License, designed to simplify the process of online publishing for individual bloggers as well as online publications.
+Ghost is an independent platform for publishing online by web and email newsletter. It has user signups, gated access and subscription payments built-in (with Stripe) to allow you to build a direct relationship with your audience. It's fast, user-friendly, and runs on Node.js & MySQL8.
 
-> [wikipedia.org/wiki/Ghost_(blogging_platform)](http://en.wikipedia.org/wiki/Ghost_%28blogging_platform%29)
+> [Ghost.org](https://ghost.org)
 
-![logo](https://raw.githubusercontent.com/docker-library/docs/c5b6d94dc8f0557925ab37ca43141c0efc5cc363/ghost/logo.png)
+![logo](https://raw.githubusercontent.com/docker-library/docs/c88522f95bebcab2322f3020f2f735210286939b/ghost/logo.png)
 
 # How to use this image
 
@@ -92,7 +97,7 @@ $ docker run -d \
 	ghost:alpine
 ```
 
-Note: `database__connection__filename` is only valid in development mode and is the location for the SQLite database file. If using development mode, it should be set to a writeable path within a persistent folder (bind mount or volume). It is not available in production mode because an external MySQL server is required (see the `docker-compose` example below).
+Note: `database__connection__filename` is only valid in development mode and is the location for the SQLite database file. If using development mode, it should be set to a writeable path within a persistent folder (bind mount or volume). It is not available in production mode because an external MySQL server is required (see the Docker Compose example below).
 
 ### Docker Volume
 
@@ -116,7 +121,28 @@ All Ghost configuration parameters (such as `url`) can be specified via environm
 $ docker run -d --name some-ghost -e NODE_ENV=development -e url=http://some-ghost.example.com ghost
 ```
 
-(There are further configuration examples in the `stack.yml` listed below.)
+(There are further configuration examples in the `compose.yaml` listed below.)
+
+## Docker Secrets
+
+As an alternative to passing sensitive configuration values via environment variables, `_FILE` may be appended to a Ghost configuration environment variable, causing Ghost to read that value from a file in the container instead. In particular, this can be used to load secrets from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
+
+```console
+$ docker run -d \
+	--name some-ghost \
+	-e database__client=mysql \
+	-e database__connection__host=some-mysql \
+	-e database__connection__user=ghost \
+	-e database__connection__password_FILE=/run/secrets/ghost-db-password \
+	-e database__connection__database=ghost \
+	ghost
+```
+
+This is supported for any nested configuration key (that is, any key containing at least one `__` separator), such as `database__connection__password` or `mail__options__auth__pass`. Top-level keys such as `url` are deliberately excluded, so that unrelated variables like `SSL_CERT_FILE` are not mistaken for Ghost configuration.
+
+A single trailing newline is stripped from the file's contents (matching `$(cat file)` behavior); any other surrounding whitespace is preserved, in case it is part of the secret. Setting both `foo__bar` and `foo__bar_FILE`, or pointing two variables which resolve to the same configuration key at different files, is an error and Ghost will refuse to start.
+
+Note: this requires Ghost 6.58.0 or newer.
 
 ## What is the Node.js version?
 
@@ -131,23 +157,55 @@ $ docker exec <container-id> node --version
 
 While the Docker images do have Ghost-CLI available and do use some of its commands to set up the base Ghost image, many of the other Ghost-CLI commands won't work correctly, and really aren't designed/intended to. For more info see [docker-library/ghost#156 (comment)](https://github.com/docker-library/ghost/issues/156#issuecomment-428159861)
 
+Ghost-CLI is not included in the `next` variant at all (see below).
+
+## The `next` variant
+
+The `next` tags (`ghost:next`, `ghost:6-next`, `ghost:next-alpine`, plus fully qualified variants such as `ghost:6.61.0-next-alpine3.23`) are a preview of the image that will become the standard `ghost` image in **Ghost 7.0**. They track the same stable upstream Ghost releases as the default tags; what differs is how the image is built and laid out, not which version of Ghost is inside. The `next` tags never carry `latest`.
+
+When Ghost 7.0 ships, this layout becomes the plain `ghost:<version>` image and the `next` tags go away, so trying `next` now is the way to find breakage in your setup ahead of that switch.
+
+### Differences from the default variant
+
+-	**Ghost is installed at `/home/ghost` instead of `/var/lib/ghost`**, so content lives at `/home/ghost/content`:
+
+	```console
+	$ docker run -d \
+	    --name some-ghost \
+	    -e NODE_ENV=development \
+	    -e database__connection__filename='/home/ghost/content/data/ghost.db' \
+	    -p 3001:2368 \
+	    -v some-ghost-data:/home/ghost/content \
+	    ghost:next
+	```
+
+	If a volume with existing Ghost content is still mounted at the old `/var/lib/ghost/content`, the container refuses to start rather than quietly booting an empty site alongside it; an empty mount at the old path only prints a warning. Nothing at the old path is modified either way.
+
+-	**No Ghost-CLI.** Ghost is installed from the tarball attached to its GitHub release, using the lockfile shipped in that tarball, rather than through `ghost install`. The `ghost` command is not present in the image. All configuration is still done with environment variables as described above.
+
+-	**Ghost is at the root of the install directory**, not in a `current/` subdirectory, and the default command is `node index.js` rather than `node current/index.js`.
+
+-	**Ghost runs as the `ghost` user** rather than `node`. It keeps uid/gid 1000, so existing bind mounts continue to work once they point at the new path.
+
+-	**Configuration ships with the image.** `config.production.json` is a file baked into the image instead of being generated at build time by Ghost-CLI. It sets the same defaults, minus the Ghost-CLI-only `process` key, and every value remains overridable via `__` environment variables.
+
+-	**Smaller runtime image.** The build doesn't include Ghost-CLI and ships a pruned Ghost install, so build toolchains, package manager caches, TypeScript sources and vendored C/C++ are not shipped.
+
 ## Production mode
 
 To run Ghost for production you'll also need to be running with MySQL 8, https, and a reverse proxy configured with appropriate `X-Forwarded-For`, `X-Forwarded-Host`, and `X-Forwarded-Proto` (`https`) headers.
 
 The following example demonstrates some of the necessary configuration for running with MySQL. For more detail, see [Ghost's "Configuration options" documentation](https://ghost.org/docs/config/#configuration-options).
 
-## ... via [`docker-compose`](https://github.com/docker/compose) or [`docker stack deploy`](https://docs.docker.com/engine/reference/commandline/stack_deploy/)
+## ... via [`docker compose`](https://github.com/docker/compose)
 
-Example `docker-compose.yml` for `ghost`:
+Example `compose.yaml` for `ghost`:
 
 ```yaml
-version: '3.1'
-
 services:
 
   ghost:
-    image: ghost:5-alpine
+    image: ghost:6-alpine
     restart: always
     ports:
       - 8080:2368
@@ -178,9 +236,7 @@ volumes:
   db:
 ```
 
-[![Try in PWD](https://github.com/play-with-docker/stacks/raw/cff22438cb4195ace27f9b15784bbb497047afa7/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/docker-library/docs/8b35a43795bda4f4ca1299bee2d02afe2434ee7f/ghost/stack.yml)
-
-Run `docker stack deploy -c stack.yml ghost` (or `docker-compose -f stack.yml up`), wait for it to initialize completely, and visit `http://swarm-ip:8080`, `http://localhost:8080`, or `http://host-ip:8080` (as appropriate).
+Run `docker compose up`, wait for it to initialize completely, and visit `http://localhost:8080` or `http://host-ip:8080` (as appropriate).
 
 # Image Variants
 
@@ -189,6 +245,8 @@ The `ghost` images come in many flavors, each designed for a specific use case.
 ## `ghost:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
+
+Some of these tags may have names like bookworm in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
 
 ## `ghost:<version>-alpine`
 

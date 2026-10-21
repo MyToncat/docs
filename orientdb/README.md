@@ -24,18 +24,21 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.2.28`, `3.2`, `latest`](https://github.com/orientechnologies/orientdb-docker/blob/21d80d7dc21a33ad10f1ec652eb183c47845b170/release/3.2.x/3.2.28/Dockerfile)
--	[`3.2.28-tp3`, `3.2-tp3`](https://github.com/orientechnologies/orientdb-docker/blob/21d80d7dc21a33ad10f1ec652eb183c47845b170/release/3.2.x/3.2.28-tp3/Dockerfile)
+-	[`3.2.57`, `3.2`, `latest`](https://github.com/orientechnologies/orientdb-docker/blob/93d8c8af845f08e0514bd3c2fe8a73ae9b76c461/release/3.2.x/3.2.57/Dockerfile)
+
+-	[`3.2.57-tp3`, `3.2-tp3`](https://github.com/orientechnologies/orientdb-docker/blob/93d8c8af845f08e0514bd3c2fe8a73ae9b76c461/release/3.2.x/3.2.57-tp3/Dockerfile)
+
 -	[`3.1.20`, `3.1`](https://github.com/orientechnologies/orientdb-docker/blob/a8a42acbe19dad60a051afe08ed625e66587dd37/release/3.1.x/3.1.20/Dockerfile)
+
 -	[`3.1.20-tp3`, `3.1-tp3`](https://github.com/orientechnologies/orientdb-docker/blob/a8a42acbe19dad60a051afe08ed625e66587dd37/release/3.1.x/3.1.20-tp3/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/orientechnologies/orientdb-docker/issues](https://github.com/orientechnologies/orientdb-docker/issues?q=)
+	[https://github.com/orientechnologies/orientdb-docker/issues](https://github.com/orientechnologies/orientdb-docker/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/orientdb/), [`arm32v7`](https://hub.docker.com/r/arm32v7/orientdb/), [`arm64v8`](https://hub.docker.com/r/arm64v8/orientdb/)
+	[`amd64`](https://hub.docker.com/r/amd64/orientdb/), [`arm64v8`](https://hub.docker.com/r/arm64v8/orientdb/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/orientdb/` directory](https://github.com/docker-library/repo-info/blob/master/repos/orientdb) ([history](https://github.com/docker-library/repo-info/commits/master/repos/orientdb))  

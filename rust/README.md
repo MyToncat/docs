@@ -24,22 +24,29 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1-buster`, `1.78-buster`, `1.78.0-buster`, `buster`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/buster/Dockerfile)
--	[`1-slim-buster`, `1.78-slim-buster`, `1.78.0-slim-buster`, `slim-buster`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/buster/slim/Dockerfile)
--	[`1-bullseye`, `1.78-bullseye`, `1.78.0-bullseye`, `bullseye`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/bullseye/Dockerfile)
--	[`1-slim-bullseye`, `1.78-slim-bullseye`, `1.78.0-slim-bullseye`, `slim-bullseye`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/bullseye/slim/Dockerfile)
--	[`1-bookworm`, `1.78-bookworm`, `1.78.0-bookworm`, `bookworm`, `1`, `1.78`, `1.78.0`, `latest`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/bookworm/Dockerfile)
--	[`1-slim-bookworm`, `1.78-slim-bookworm`, `1.78.0-slim-bookworm`, `slim-bookworm`, `1-slim`, `1.78-slim`, `1.78.0-slim`, `slim`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/bookworm/slim/Dockerfile)
--	[`1-alpine3.18`, `1.78-alpine3.18`, `1.78.0-alpine3.18`, `alpine3.18`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/alpine3.18/Dockerfile)
--	[`1-alpine3.19`, `1.78-alpine3.19`, `1.78.0-alpine3.19`, `alpine3.19`, `1-alpine`, `1.78-alpine`, `1.78.0-alpine`, `alpine`](https://github.com/rust-lang/docker-rust/blob/cc31986e1dfe94671c639231ecf0503942c121d9/1.78.0/alpine3.19/Dockerfile)
+-	[`1-bookworm`, `1.99-bookworm`, `1.99.1-bookworm`, `bookworm`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/bookworm/Dockerfile)
+
+-	[`1-slim-bookworm`, `1.99-slim-bookworm`, `1.99.1-slim-bookworm`, `slim-bookworm`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/bookworm/slim/Dockerfile)
+
+-	[`1-trixie`, `1.99-trixie`, `1.99.1-trixie`, `trixie`, `1`, `1.99`, `1.99.1`, `latest`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/trixie/Dockerfile)
+
+-	[`1-slim-trixie`, `1.99-slim-trixie`, `1.99.1-slim-trixie`, `slim-trixie`, `1-slim`, `1.99-slim`, `1.99.1-slim`, `slim`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/trixie/slim/Dockerfile)
+
+-	[`1-alpine3.21`, `1.99-alpine3.21`, `1.99.1-alpine3.21`, `alpine3.21`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/alpine3.21/Dockerfile)
+
+-	[`1-alpine3.22`, `1.99-alpine3.22`, `1.99.1-alpine3.22`, `alpine3.22`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/alpine3.22/Dockerfile)
+
+-	[`1-alpine3.23`, `1.99-alpine3.23`, `1.99.1-alpine3.23`, `alpine3.23`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/alpine3.23/Dockerfile)
+
+-	[`1-alpine3.24`, `1.99-alpine3.24`, `1.99.1-alpine3.24`, `alpine3.24`, `1-alpine`, `1.99-alpine`, `1.99.1-alpine`, `alpine`](https://github.com/rust-lang/docker-rust/blob/de3b3171ec576fd91eb8e28d3d37fa117b135fcb/stable/alpine3.24/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/rust-lang/docker-rust/issues](https://github.com/rust-lang/docker-rust/issues?q=)
+	[https://github.com/rust-lang/docker-rust/issues](https://github.com/rust-lang/docker-rust/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/rust/), [`arm32v7`](https://hub.docker.com/r/arm32v7/rust/), [`arm64v8`](https://hub.docker.com/r/arm64v8/rust/), [`i386`](https://hub.docker.com/r/i386/rust/), [`ppc64le`](https://hub.docker.com/r/ppc64le/rust/), [`s390x`](https://hub.docker.com/r/s390x/rust/)
+	[`amd64`](https://hub.docker.com/r/amd64/rust/), [`arm32v7`](https://hub.docker.com/r/arm32v7/rust/), [`arm64v8`](https://hub.docker.com/r/arm64v8/rust/), [`i386`](https://hub.docker.com/r/i386/rust/), [`ppc64le`](https://hub.docker.com/r/ppc64le/rust/), [`riscv64`](https://hub.docker.com/r/riscv64/rust/), [`s390x`](https://hub.docker.com/r/s390x/rust/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/rust/` directory](https://github.com/docker-library/repo-info/blob/master/repos/rust) ([history](https://github.com/docker-library/repo-info/commits/master/repos/rust))  
@@ -122,7 +129,7 @@ The `rust` images come in many flavors, each designed for a specific use case.
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-Some of these tags may have names like bookworm, bullseye, or buster in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
+Some of these tags may have names like bookworm or trixie in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
 
 This tag is based off of [`buildpack-deps`](https://hub.docker.com/_/buildpack-deps/). `buildpack-deps` is designed for the average user of Docker who has many images on their system. It, by design, has a large number of extremely common Debian packages. This reduces the number of packages that images that derive from it need to install, thus reducing the overall size of all images on your system.
 

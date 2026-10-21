@@ -24,18 +24,17 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`latest`, `3.3.3`, `3.3`, `3`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.3.3/Dockerfile)
--	[`3.2.3`, `3.2`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.2.3/Dockerfile)
--	[`3.1.2`, `3.1`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/3.1.2/Dockerfile)
--	[`2.3.1`, `2.3`, `2`](https://github.com/apache/couchdb-docker/blob/58910ed097489dc588b2a87592406f8faa1bdadf/2.3.1/Dockerfile)
+-	[`latest`, `3.5.3`, `3.5`, `3`](https://github.com/apache/couchdb-docker/blob/a61e7b8f4bbe5f0aa4bf1e2a53514989792b463c/3.5.3/Dockerfile)
+
+-	[`3.5.3-nouveau`, `3.5-nouveau`, `3-nouveau`](https://github.com/apache/couchdb-docker/blob/a61e7b8f4bbe5f0aa4bf1e2a53514989792b463c/3.5.3-nouveau/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/apache/couchdb-docker/issues](https://github.com/apache/couchdb-docker/issues?q=)
+	[https://github.com/apache/couchdb-docker/issues](https://github.com/apache/couchdb-docker/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/couchdb/), [`arm64v8`](https://hub.docker.com/r/arm64v8/couchdb/), [`ppc64le`](https://hub.docker.com/r/ppc64le/couchdb/), [`s390x`](https://hub.docker.com/r/s390x/couchdb/)
+	[`amd64`](https://hub.docker.com/r/amd64/couchdb/), [`arm64v8`](https://hub.docker.com/r/arm64v8/couchdb/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/couchdb/` directory](https://github.com/docker-library/repo-info/blob/master/repos/couchdb) ([history](https://github.com/docker-library/repo-info/commits/master/repos/couchdb))  

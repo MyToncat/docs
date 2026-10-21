@@ -24,16 +24,18 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`5.0-beta1`, `5.0`, `5`, `5.0-beta1-jammy`, `5.0-jammy`, `5-jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/5.0/Dockerfile)
--	[`4.1.4`, `4.1`, `4`, `latest`, `4.1.4-jammy`, `4.1-jammy`, `4-jammy`, `jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/4.1/Dockerfile)
--	[`4.0.12`, `4.0`, `4.0.12-jammy`, `4.0-jammy`](https://github.com/docker-library/cassandra/blob/dd34dfac80c45a1c4e6ac6029e80385c778e8d1d/4.0/Dockerfile)
--	[`3.11.17`, `3.11`, `3`, `3.11.17-jammy`, `3.11-jammy`, `3-jammy`](https://github.com/docker-library/cassandra/blob/abab4c99e553fca077336ca097dd84107f2d3034/3.11/Dockerfile)
--	[`3.0.30`, `3.0`, `3.0.30-jammy`, `3.0-jammy`](https://github.com/docker-library/cassandra/blob/2324f94cb4e9686859e3f487f725908bfbefc9d2/3.0/Dockerfile)
+-	[`6.0-alpha2`, `6.0`, `6.0-alpha2-trixie`, `6.0-trixie`](https://github.com/docker-library/cassandra/blob/929d3a1ab0aa656873dacdd915d8a86b85547776/6.0/Dockerfile)
+
+-	[`5.0.9`, `5.0`, `5`, `latest`, `5.0.9-trixie`, `5.0-trixie`, `5-trixie`, `trixie`](https://github.com/docker-library/cassandra/blob/929d3a1ab0aa656873dacdd915d8a86b85547776/5.0/Dockerfile)
+
+-	[`4.1.12`, `4.1`, `4`, `4.1.12-bookworm`, `4.1-bookworm`, `4-bookworm`](https://github.com/docker-library/cassandra/blob/50bacaca78e08e488aebc7a9d11b4fd1f188770a/4.1/Dockerfile)
+
+-	[`4.0.21`, `4.0`, `4.0.21-bookworm`, `4.0-bookworm`](https://github.com/docker-library/cassandra/blob/7dc920047b2cc14d817e42d1f36b109e76ac4e7e/4.0/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/docker-library/cassandra/issues](https://github.com/docker-library/cassandra/issues?q=)
+	[https://github.com/docker-library/cassandra/issues](https://github.com/docker-library/cassandra/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/cassandra/), [`arm32v7`](https://hub.docker.com/r/arm32v7/cassandra/), [`arm64v8`](https://hub.docker.com/r/arm64v8/cassandra/), [`ppc64le`](https://hub.docker.com/r/ppc64le/cassandra/), [`s390x`](https://hub.docker.com/r/s390x/cassandra/)
@@ -165,7 +167,7 @@ The `-v /my/own/datadir:/var/lib/cassandra` part of the command mounts the `/my/
 
 ## No connections until Cassandra init completes
 
-If there is no database initialized when the container starts, then a default database will be created. While this is the expected behavior, this means that it will not accept incoming connections until such initialization completes. This may cause issues when using automation tools, such as `docker-compose`, which start several containers simultaneously.
+If there is no database initialized when the container starts, then a default database will be created. While this is the expected behavior, this means that it will not accept incoming connections until such initialization completes. This may cause issues when using automation tools, such as Docker Compose, which start several containers simultaneously.
 
 # License
 

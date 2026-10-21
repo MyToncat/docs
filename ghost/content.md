@@ -1,8 +1,8 @@
 # Ghost
 
-Ghost is a free and open source blogging platform written in JavaScript and distributed under the MIT License, designed to simplify the process of online publishing for individual bloggers as well as online publications.
+Ghost is an independent platform for publishing online by web and email newsletter. It has user signups, gated access and subscription payments built-in (with Stripe) to allow you to build a direct relationship with your audience. It's fast, user-friendly, and runs on Node.js & MySQL8.
 
-> [wikipedia.org/wiki/Ghost_(blogging_platform)](http://en.wikipedia.org/wiki/Ghost_%28blogging_platform%29)
+> [Ghost.org](https://ghost.org)
 
 %%LOGO%%
 
@@ -44,7 +44,7 @@ $ docker run -d \
 	%%IMAGE%%:alpine
 ```
 
-Note: `database__connection__filename` is only valid in development mode and is the location for the SQLite database file. If using development mode, it should be set to a writeable path within a persistent folder (bind mount or volume). It is not available in production mode because an external MySQL server is required (see the `docker-compose` example below).
+Note: `database__connection__filename` is only valid in development mode and is the location for the SQLite database file. If using development mode, it should be set to a writeable path within a persistent folder (bind mount or volume). It is not available in production mode because an external MySQL server is required (see the Docker Compose example below).
 
 ### Docker Volume
 
@@ -68,7 +68,28 @@ All Ghost configuration parameters (such as `url`) can be specified via environm
 $ docker run -d --name some-ghost -e NODE_ENV=development -e url=http://some-ghost.example.com %%IMAGE%%
 ```
 
-(There are further configuration examples in the `stack.yml` listed below.)
+(There are further configuration examples in the `compose.yaml` listed below.)
+
+## Docker Secrets
+
+As an alternative to passing sensitive configuration values via environment variables, `_FILE` may be appended to a Ghost configuration environment variable, causing Ghost to read that value from a file in the container instead. In particular, this can be used to load secrets from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
+
+```console
+$ docker run -d \
+	--name some-ghost \
+	-e database__client=mysql \
+	-e database__connection__host=some-mysql \
+	-e database__connection__user=ghost \
+	-e database__connection__password_FILE=/run/secrets/ghost-db-password \
+	-e database__connection__database=ghost \
+	%%IMAGE%%
+```
+
+This is supported for any nested configuration key (that is, any key containing at least one `__` separator), such as `database__connection__password` or `mail__options__auth__pass`. Top-level keys such as `url` are deliberately excluded, so that unrelated variables like `SSL_CERT_FILE` are not mistaken for Ghost configuration.
+
+A single trailing newline is stripped from the file's contents (matching `$(cat file)` behavior); any other surrounding whitespace is preserved, in case it is part of the secret. Setting both `foo__bar` and `foo__bar_FILE`, or pointing two variables which resolve to the same configuration key at different files, is an error and Ghost will refuse to start.
+
+Note: this requires Ghost 6.58.0 or newer.
 
 ## What is the Node.js version?
 
@@ -83,12 +104,46 @@ $ docker exec <container-id> node --version
 
 While the Docker images do have Ghost-CLI available and do use some of its commands to set up the base Ghost image, many of the other Ghost-CLI commands won't work correctly, and really aren't designed/intended to. For more info see [docker-library/ghost#156 (comment)](https://github.com/docker-library/ghost/issues/156#issuecomment-428159861)
 
+Ghost-CLI is not included in the `next` variant at all (see below).
+
+## The `next` variant
+
+The `next` tags (`%%IMAGE%%:next`, `%%IMAGE%%:6-next`, `%%IMAGE%%:next-alpine`, plus fully qualified variants such as `%%IMAGE%%:6.61.0-next-alpine3.23`) are a preview of the image that will become the standard `%%IMAGE%%` image in **Ghost 7.0**. They track the same stable upstream Ghost releases as the default tags; what differs is how the image is built and laid out, not which version of Ghost is inside. The `next` tags never carry `latest`.
+
+When Ghost 7.0 ships, this layout becomes the plain `%%IMAGE%%:<version>` image and the `next` tags go away, so trying `next` now is the way to find breakage in your setup ahead of that switch.
+
+### Differences from the default variant
+
+-	**Ghost is installed at `/home/ghost` instead of `/var/lib/ghost`**, so content lives at `/home/ghost/content`:
+
+	```console
+	$ docker run -d \
+	    --name some-ghost \
+	    -e NODE_ENV=development \
+	    -e database__connection__filename='/home/ghost/content/data/ghost.db' \
+	    -p 3001:2368 \
+	    -v some-ghost-data:/home/ghost/content \
+	    %%IMAGE%%:next
+	```
+
+	If a volume with existing Ghost content is still mounted at the old `/var/lib/ghost/content`, the container refuses to start rather than quietly booting an empty site alongside it; an empty mount at the old path only prints a warning. Nothing at the old path is modified either way.
+
+-	**No Ghost-CLI.** Ghost is installed from the tarball attached to its GitHub release, using the lockfile shipped in that tarball, rather than through `ghost install`. The `ghost` command is not present in the image. All configuration is still done with environment variables as described above.
+
+-	**Ghost is at the root of the install directory**, not in a `current/` subdirectory, and the default command is `node index.js` rather than `node current/index.js`.
+
+-	**Ghost runs as the `ghost` user** rather than `node`. It keeps uid/gid 1000, so existing bind mounts continue to work once they point at the new path.
+
+-	**Configuration ships with the image.** `config.production.json` is a file baked into the image instead of being generated at build time by Ghost-CLI. It sets the same defaults, minus the Ghost-CLI-only `process` key, and every value remains overridable via `__` environment variables.
+
+-	**Smaller runtime image.** The build doesn't include Ghost-CLI and ships a pruned Ghost install, so build toolchains, package manager caches, TypeScript sources and vendored C/C++ are not shipped.
+
 ## Production mode
 
 To run Ghost for production you'll also need to be running with MySQL 8, https, and a reverse proxy configured with appropriate `X-Forwarded-For`, `X-Forwarded-Host`, and `X-Forwarded-Proto` (`https`) headers.
 
 The following example demonstrates some of the necessary configuration for running with MySQL. For more detail, see [Ghost's "Configuration options" documentation](https://ghost.org/docs/config/#configuration-options).
 
-## %%STACK%%
+## %%COMPOSE%%
 
-Run `docker stack deploy -c stack.yml %%REPO%%` (or `docker-compose -f stack.yml up`), wait for it to initialize completely, and visit `http://swarm-ip:8080`, `http://localhost:8080`, or `http://host-ip:8080` (as appropriate).
+Run `docker compose up`, wait for it to initialize completely, and visit `http://localhost:8080` or `http://host-ip:8080` (as appropriate).

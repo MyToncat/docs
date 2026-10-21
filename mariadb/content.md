@@ -10,40 +10,60 @@ The intent is also to maintain high compatibility with MySQL, ensuring a library
 
 The %%IMAGE%% has a number of tags, and of note is `latest`, as the latest stable version, and `lts`, as the last long term support release.
 
+Image architecture requirements:
+
+| MariaDB version  | Base       | Release   | amd64 / x86-64                                                                                                                                                              | aarch64 / arm64                                                                                                                                                             | ppc64le                                                                                                                                                                  | s390x                                                                                                                                                                 |
+|------------------|------------|----------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **10.6 / 10.11** | Ubuntu LTS | **22.04** | [x86-64 baseline](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                     | [ARMv8-A](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                             | [POWER9+](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                          | [z13+](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                          |
+| **11.4 - 12.3**  | Ubuntu LTS | **24.04** | [x86-64 baseline](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                     | [ARMv8-A](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                             | [POWER9+](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                          | [z13+](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                          |
+| **13.0+**        | Ubuntu LTS | **26.04** | [x86-64 baseline](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                     | [ARMv8-A](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                             | [POWER9+](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                          | [z15+](https://ubuntu.com/project/docs/how-ubuntu-is-made/concepts/supported-architectures/)                                                                          |
+| **10.6 - 11.8**  | RHEL / UBI |     **9** | [x86-64-v2](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_architectures_considerations-in-adopting-rhel-9) | [ARMv8.0-A](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_architectures_considerations-in-adopting-rhel-9) | [POWER9](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_architectures_considerations-in-adopting-rhel-9) | [z14](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/ref_architectures_considerations-in-adopting-rhel-9) |
+| **12.3+**        | RHEL / UBI |    **10** | [x86-64-v3](https://access.redhat.com/solutions/7066628)                                                                                                                    | [ARMv8.0-A](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/10.0_release_notes/architectures)                                                     | [POWER10+](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/10.1_release_notes/architectures)                                                   | [z15+](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/10.1_release_notes/architectures)                                                    |
+
 ## Running the container
+
+### Configuration
+
+#### Port binding
+
+By default, the database running within the container will listen on port 3306. You can expose the container port 3306 to the host port 3306 with the `-p 3306:3306` argument to `docker run`, like the command below:
+
+```console
+$ docker run --name some-%%REPO%% -p 3306:3306 %%IMAGE%%:latest
+```
 
 ### Starting using a minimal configuration
 
 The environment variables required to use this image involves the setting of the root user password:
 
 ```console
-$ docker run --detach --name some-%%REPO%% --env MARIADB_ROOT_PASSWORD=my-secret-pw  %%IMAGE%%:latest
+$ docker run --detach --name some-%%REPO%% --env MARIADB_ROOT_PASSWORD=my-secret-pw %%IMAGE%%:latest
 ```
 
 or:
 
 ```console
-$ docker run --detach --name some-%%REPO%% --env MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1  %%IMAGE%%:latest
+$ docker run --detach --name some-%%REPO%% --env MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=1 %%IMAGE%%:latest
 ```
 
 or:
 
 ```console
-$ docker run --detach --name some-%%REPO%% --env MARIADB_RANDOM_ROOT_PASSWORD=1  %%IMAGE%%:latest
+$ docker run --detach --name some-%%REPO%% --env MARIADB_RANDOM_ROOT_PASSWORD=1 %%IMAGE%%:latest
 ```
 
 ... where the container logs will contain the generated root password.
 
-## %%STACK%%
+## %%COMPOSE%%
 
-Run `docker stack deploy -c stack.yml %%REPO%%` (or `docker-compose -f stack.yml up`), wait for it to initialize completely, and visit `http://swarm-ip:8080`, `http://localhost:8080`, or `http://host-ip:8080` (as appropriate).
+Run `docker compose up`, wait for it to initialize completely, and visit `http://localhost:8080` or `http://host-ip:8080` (as appropriate).
 
 ### Start a `%%IMAGE%%` server instance with user, password and database
 
 Starting a MariaDB instance with a user, password, and a database:
 
 ```console
-$ docker run --detach --name some-%%REPO%% --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_DATABASE=exmple-database --env MARIADB_ROOT_PASSWORD=my-secret-pw  %%IMAGE%%:latest
+$ docker run --detach --name some-%%REPO%% --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_DATABASE=exmple-database --env MARIADB_ROOT_PASSWORD=my-secret-pw %%IMAGE%%:latest
 ```
 
 ### Start a `%%IMAGE%%` server instance in a network
@@ -52,8 +72,8 @@ As applications talk to MariaDB, MariaDB needs to start in the same network as t
 
 ```console
 $ docker network create some-network 
-$ docker run --detach --network some-network --name some-%%REPO%% --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  %%IMAGE%%:latest
-$ docker run --detach --network some-network --name some-application --env APP_DB_HOST=some-%%REPO%%  --env APP_DB_USER=example-user --env APP_DB_PASSWD=my_cool_secret some-application
+$ docker run --detach --network some-network --name some-%%REPO%% --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw %%IMAGE%%:latest
+$ docker run --detach --network some-network --name some-application --env APP_DB_HOST=some-%%REPO%% --env APP_DB_USER=example-user --env APP_DB_PASSWD=my_cool_secret some-application
 ```
 
 ... where `some-network` is a newly created network (other than `bridge` as the default network), `some-%%REPO%%` is the name you want to assign to your container, `my-secret-pw` is the password to be set for the MariaDB root user. See the list above for relevant tags to match your needs and environment. `some-application` and then environment variable `APP_DB_HOST`, `APP_DB_USER` and `APP_DB_PASSWD` are the application's configuration for its database connection.
@@ -63,7 +83,7 @@ $ docker run --detach --network some-network --name some-application --env APP_D
 The following command starts another `%%IMAGE%%` container instance and runs the `mariadb` command line client against your original `%%IMAGE%%` container, allowing you to execute SQL statements against your database instance:
 
 ```console
-$ docker run -it --network some-network --rm %%IMAGE%% mariadb -hsome-%%REPO%% -uexample-user -p
+$ docker run -it --network some-network --rm %%IMAGE%% mariadb -h some-%%REPO%% -u example-user
 ```
 
 ... where `some-%%REPO%%` is the name of your original `%%IMAGE%%` container (connected to the `some-network` Docker network).
@@ -77,35 +97,35 @@ $ docker run -it --rm %%IMAGE%% mariadb --host <server container IP> --user exam
 That will give you a standard MariaDB prompt. You can test it with:
 
 ```console
-MariaDB [(none)]> \s
+MariaDB [test]> \s
 --------------
-client/mariadb  Ver 15.1 Distrib 10.6.16-MariaDB, for Linux (x86_64) using  EditLine wrapper
+mariadb from 12.3.3-MariaDB, client 15.2 for debian-linux-gnu (x86_64) using  EditLine wrapper
 
-Connection id:		20
+Connection id:		5
 Current database:	test
-Current user:		example-user@bark
-SSL:			Not in use
+Current user:		example-user@10.89.0.5
+SSL:			Cipher in use is TLS_AES_256_GCM_SHA384, cert is OK
 Current pager:		stdout
 Using outfile:		''
 Using delimiter:	;
 Server:			MariaDB
-Server version:		10.6.16-MariaDB Source distribution
+Server version:		12.3.3-MariaDB-ubu2404 mariadb.org binary distribution
 Protocol version:	10
-Connection:		192.168.178.73 via TCP/IP
-Server characterset:	latin1
-Db     characterset:	latin1
-Client characterset:	utf8mb3
-Conn.  characterset:	utf8mb3
+Connection:		m via TCP/IP
+Server characterset:	utf8mb4
+Db     characterset:	utf8mb4
+Client characterset:	utf8mb4
+Conn.  characterset:	utf8mb4
 TCP port:		3306
-Uptime:			6 min 4 sec
+Uptime:			3 min 7 sec
 
-Threads: 1  Questions: 32  Slow queries: 0  Opens: 20  Open tables: 13  Queries per second avg: 0.087
+Threads: 1  Questions: 12  Slow queries: 0  Opens: 17  Open tables: 10  Queries per second avg: 0.064
 --------------
 ```
 
 ... which will give you the version and connection information. You can then use `exit` to leave the MariaDB command line client and the client container.
 
-More information about the MariaDB command-line client can be found in the [MariaDB Knowledge Base : MariaDB Command Line Client](https://mariadb.com/kb/en/mariadb-command-line-client/).
+More information about the MariaDB command-line client can be found in the [MariaDB Documentation : MariaDB Command Line Client](https://mariadb.com/docs/server/clients-and-utilities/mariadb-client/mariadb-command-line-client).
 
 ## Container shell access
 
@@ -137,15 +157,15 @@ Custom configuration files should end in `.cnf` and be mounted read only at the 
 
 The `%%IMAGE%%` image configuration contains the Ubuntu MariaDB variables with two custom changes for the container:
 
-	[host-cache-size=0](https://mariadb.com/kb/en/server-system-variables/#host_cache_size)
-	[skip-name-resolve](https://mariadb.com/kb/en/server-system-variables/#skip_name_resolve)
+-	[`host-cache-size=0`](https://mariadb.com/kb/en/server-system-variables/#host_cache_size)
+-	[`skip-name-resolve`](https://mariadb.com/kb/en/server-system-variables/#skip_name_resolve)
 
 These disable the authentication of `user@hostname` users. To re-enable the `skip-name-resolve` use `disable-skip-name-resolve` as variable or argument. When enabled, the `host-cache-size` should be sufficient for the number of containers connecting to the `%%IMAGE%%`.
 
 To view the resulting configuration of your `%%IMAGE%%` container:
 
 ```console
-$ docker run --name some-%%REPO%% -v /my/custom:/etc/mysql/conf.d --rm %%IMAGE%%:latest my_print_defaults --mysqld
+$ docker run --name some-%%REPO%% -v /my/custom:/etc/mysql/conf.d --rm %%IMAGE%%:latest my_print_defaults --mariadbd
 ```
 
 ### Configuration without a `cnf` file
@@ -159,7 +179,7 @@ $ docker run --name some-%%REPO%% -e MARIADB_ROOT_PASSWORD=my-secret-pw -d %%IMA
 If you would like to see a complete list of available options, just run:
 
 ```console
-$ docker run -it --rm %%IMAGE%%:latest --verbose --help
+$ docker run --rm %%IMAGE%%:latest --verbose --help
 ```
 
 ## Environment Variables
@@ -208,11 +228,11 @@ The `-v /my/own/datadir:/var/lib/mysql:Z` part of the command mounts the `/my/ow
 
 ## No connections until MariaDB init completes
 
-If there is no database initialized when the container starts, then a default database will be created. While this is the expected behavior, this means that it will not accept incoming connections until such initialization completes. This may cause issues when using automation tools, such as `docker-compose`, which start several containers simultaneously.
+If there is no database initialized when the container starts, then a default database will be created. While this is the expected behavior, this means that it will not accept incoming connections until such initialization completes. This may cause issues when using automation tools, such as `docker compose`, which start several containers simultaneously.
 
 ## Health/Liveness/Readiness Checking
 
-See [the "Official Images" FAQ](https://github.com/docker-library/faq#healthcheck) for why there is no default `HEALTHCHECK` directive. However, you can use the `healthcheck.sh` script to choose from a (non-exhaustive) list of tests to check for whatever you consider health/liveness/readiness. Refer to the [MariaDB Knowledge Base : Using Healthcheck.sh](https://mariadb.com/kb/en/using-healthcheck-sh-script/) to learn about how to use it and which exact tests are provided.
+See [the "Official Images" FAQ](https://github.com/docker-library/faq#healthcheck) for why there is no default `HEALTHCHECK` directive. However, you can use the `healthcheck.sh` script to choose from a (non-exhaustive) list of tests to check for whatever you consider health/liveness/readiness. Refer to the [MariaDB Documentation : Using Healthcheck.sh](https://mariadb.com/docs/server/server-management/automated-mariadb-deployment-and-administration/docker-and-mariadb/using-healthcheck-sh) to learn about how to use it and which exact tests are provided.
 
 ## Usage against an existing database
 
@@ -220,20 +240,19 @@ If you start your `%%IMAGE%%` container instance with a data directory that alre
 
 ## Backups and Restores
 
-Backing up and restoring databases is important in containers too. The documentation on how to do this can be found on the [MariaDB Knowledge Base : Container Backup and Restoration](https://mariadb.com/kb/en/backups-and-restoration/).
+Backing up and restoring databases is important in containers too. The documentation on how to do this can be found on the [MariaDB Documentation : Container Backup and Restoration](https://mariadb.com/docs/server/server-management/automated-mariadb-deployment-and-administration/docker-and-mariadb/container-backup-and-restoration).
 
 ## Frequently Asked Questions / How to reset root and user passwords
 
-This is documented on [MariaDB Knowledge Base : Frequenty Asked Questions of Docker Official Image](https://mariadb.com/kb/en/frequenty-asked-questions-of-docker-official-image/#how-to-reset-passwords).
+This is documented on [MariaDB Documentation : Frequenty Asked Questions of Docker Official Image](https://mariadb.com/docs/server/server-management/automated-mariadb-deployment-and-administration/docker-and-mariadb/docker-official-image-frequently-asked-questions#how-to-reset-passwords).
 
 ## How to install MariaDB plugins
 
-This is documented on [MariaDB Knowledge Base : Adding Plugins to the Docker Official Image](https://mariadb.com/kb/en/adding-plugins-to-the-mariadb-docker-official-image/).
+This is documented on [MariaDB Documentation : Adding Plugins to the Docker Official Image](https://mariadb.com/docs/server/server-management/automated-mariadb-deployment-and-administration/docker-and-mariadb/adding-plugins-to-the-mariadb-docker-official-image).
 
 # Related Images
 
 -	[MariaDB MaxScale](https://hub.docker.com/r/mariadb/maxscale/tags)
--	[MariaDB ColumnStore](https://hub.docker.com/r/mariadb/columnstore/tags)
 
 # Compose File Examples
 

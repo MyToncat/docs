@@ -24,22 +24,53 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.13.2`, `3.13`, `3`, `latest`](https://github.com/docker-library/rabbitmq/blob/8eeb831c647aab7f7bb2cd1dd2228edca0908b62/3.13/ubuntu/Dockerfile)
--	[`3.13.2-management`, `3.13-management`, `3-management`, `management`](https://github.com/docker-library/rabbitmq/blob/6cc0f66ec13b06c153a7527c033cf1ad59a97ef3/3.13/ubuntu/management/Dockerfile)
--	[`3.13.2-alpine`, `3.13-alpine`, `3-alpine`, `alpine`](https://github.com/docker-library/rabbitmq/blob/8eeb831c647aab7f7bb2cd1dd2228edca0908b62/3.13/alpine/Dockerfile)
--	[`3.13.2-management-alpine`, `3.13-management-alpine`, `3-management-alpine`, `management-alpine`](https://github.com/docker-library/rabbitmq/blob/6cc0f66ec13b06c153a7527c033cf1ad59a97ef3/3.13/alpine/management/Dockerfile)
--	[`3.12.14`, `3.12`](https://github.com/docker-library/rabbitmq/blob/4482825c6f2c929cd26157c59018ef43455e4288/3.12/ubuntu/Dockerfile)
--	[`3.12.14-management`, `3.12-management`](https://github.com/docker-library/rabbitmq/blob/c30652127ae871535b7ec8ecda8046948a52ab79/3.12/ubuntu/management/Dockerfile)
--	[`3.12.14-alpine`, `3.12-alpine`](https://github.com/docker-library/rabbitmq/blob/4482825c6f2c929cd26157c59018ef43455e4288/3.12/alpine/Dockerfile)
--	[`3.12.14-management-alpine`, `3.12-management-alpine`](https://github.com/docker-library/rabbitmq/blob/c30652127ae871535b7ec8ecda8046948a52ab79/3.12/alpine/management/Dockerfile)
+-	[`4.4.0`, `4.4`, `4`, `latest`](https://github.com/docker-library/rabbitmq/blob/4ad287295317ea1d9a577396fa28466a1bbf3430/4.4/ubuntu/Dockerfile)
+
+-	[`4.4.0-management`, `4.4-management`, `4-management`, `management`](https://github.com/docker-library/rabbitmq/blob/4ad287295317ea1d9a577396fa28466a1bbf3430/4.4/ubuntu/management/Dockerfile)
+
+-	[`4.4.0-alpine`, `4.4-alpine`, `4-alpine`, `alpine`](https://github.com/docker-library/rabbitmq/blob/4ad287295317ea1d9a577396fa28466a1bbf3430/4.4/alpine/Dockerfile)
+
+-	[`4.4.0-management-alpine`, `4.4-management-alpine`, `4-management-alpine`, `management-alpine`](https://github.com/docker-library/rabbitmq/blob/4ad287295317ea1d9a577396fa28466a1bbf3430/4.4/alpine/management/Dockerfile)
+
+-	[`4.3.7`, `4.3`](https://github.com/docker-library/rabbitmq/blob/0b2a146a189d6d604a77e5a474e3f12f46abdbe4/4.3/ubuntu/Dockerfile)
+
+-	[`4.3.7-management`, `4.3-management`](https://github.com/docker-library/rabbitmq/blob/a2d49841fbcf81713cf0e1c279facbce545e2292/4.3/ubuntu/management/Dockerfile)
+
+-	[`4.3.7-alpine`, `4.3-alpine`](https://github.com/docker-library/rabbitmq/blob/0b2a146a189d6d604a77e5a474e3f12f46abdbe4/4.3/alpine/Dockerfile)
+
+-	[`4.3.7-management-alpine`, `4.3-management-alpine`](https://github.com/docker-library/rabbitmq/blob/a2d49841fbcf81713cf0e1c279facbce545e2292/4.3/alpine/management/Dockerfile)
+
+-	[`4.2.9`, `4.2`](https://github.com/docker-library/rabbitmq/blob/3ae27f3f0f9bec99dac40ad3519e4a1ebccf17b1/4.2/ubuntu/Dockerfile)
+
+-	[`4.2.9-management`, `4.2-management`](https://github.com/docker-library/rabbitmq/blob/1e39120acefdff683137abc064a21bc17731a84f/4.2/ubuntu/management/Dockerfile)
+
+-	[`4.2.9-alpine`, `4.2-alpine`](https://github.com/docker-library/rabbitmq/blob/3ae27f3f0f9bec99dac40ad3519e4a1ebccf17b1/4.2/alpine/Dockerfile)
+
+-	[`4.2.9-management-alpine`, `4.2-management-alpine`](https://github.com/docker-library/rabbitmq/blob/1e39120acefdff683137abc064a21bc17731a84f/4.2/alpine/management/Dockerfile)
+
+-	[`4.1.8`, `4.1`](https://github.com/docker-library/rabbitmq/blob/cae318a5893831eacca4bca1124f9f78f8856538/4.1/ubuntu/Dockerfile)
+
+-	[`4.1.8-management`, `4.1-management`](https://github.com/docker-library/rabbitmq/blob/77700515643c9fc8c93421b828758401f1a7b953/4.1/ubuntu/management/Dockerfile)
+
+-	[`4.1.8-alpine`, `4.1-alpine`](https://github.com/docker-library/rabbitmq/blob/cae318a5893831eacca4bca1124f9f78f8856538/4.1/alpine/Dockerfile)
+
+-	[`4.1.8-management-alpine`, `4.1-management-alpine`](https://github.com/docker-library/rabbitmq/blob/77700515643c9fc8c93421b828758401f1a7b953/4.1/alpine/management/Dockerfile)
+
+-	[`4.0.9`, `4.0`](https://github.com/docker-library/rabbitmq/blob/e651df4e913d43d95b552cba7f29155e5cd000e5/4.0/ubuntu/Dockerfile)
+
+-	[`4.0.9-management`, `4.0-management`](https://github.com/docker-library/rabbitmq/blob/453af2d84b44206ae685da6b341aef6bf8fda4ae/4.0/ubuntu/management/Dockerfile)
+
+-	[`4.0.9-alpine`, `4.0-alpine`](https://github.com/docker-library/rabbitmq/blob/e651df4e913d43d95b552cba7f29155e5cd000e5/4.0/alpine/Dockerfile)
+
+-	[`4.0.9-management-alpine`, `4.0-management-alpine`](https://github.com/docker-library/rabbitmq/blob/453af2d84b44206ae685da6b341aef6bf8fda4ae/4.0/alpine/management/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/docker-library/rabbitmq/issues](https://github.com/docker-library/rabbitmq/issues?q=)
+	[https://github.com/docker-library/rabbitmq/issues](https://github.com/docker-library/rabbitmq/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/rabbitmq/), [`arm32v6`](https://hub.docker.com/r/arm32v6/rabbitmq/), [`arm32v7`](https://hub.docker.com/r/arm32v7/rabbitmq/), [`arm64v8`](https://hub.docker.com/r/arm64v8/rabbitmq/), [`i386`](https://hub.docker.com/r/i386/rabbitmq/), [`ppc64le`](https://hub.docker.com/r/ppc64le/rabbitmq/), [`s390x`](https://hub.docker.com/r/s390x/rabbitmq/)
+	[`amd64`](https://hub.docker.com/r/amd64/rabbitmq/), [`arm32v6`](https://hub.docker.com/r/arm32v6/rabbitmq/), [`arm32v7`](https://hub.docker.com/r/arm32v7/rabbitmq/), [`arm64v8`](https://hub.docker.com/r/arm64v8/rabbitmq/), [`i386`](https://hub.docker.com/r/i386/rabbitmq/), [`ppc64le`](https://hub.docker.com/r/ppc64le/rabbitmq/), [`riscv64`](https://hub.docker.com/r/riscv64/rabbitmq/), [`s390x`](https://hub.docker.com/r/s390x/rabbitmq/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/rabbitmq/` directory](https://github.com/docker-library/repo-info/blob/master/repos/rabbitmq) ([history](https://github.com/docker-library/repo-info/commits/master/repos/rabbitmq))  
@@ -113,10 +144,15 @@ RABBITMQ_VM_MEMORY_HIGH_WATERMARK
 If you wish to change the default username and password of `guest` / `guest`, you can do so with the `RABBITMQ_DEFAULT_USER` and `RABBITMQ_DEFAULT_PASS` environmental variables. These variables were available previously in the docker-specific entrypoint shell script but are now available in RabbitMQ directly.
 
 ```console
-$ docker run -d --hostname my-rabbit --name some-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3-management
+$ docker run --detach --hostname my-rabbit --name some-rabbit \
+    --env RABBITMQ_DEFAULT_USER=user \
+    --env RABBITMQ_DEFAULT_PASS=password \
+    --publish 15672:15672 \
+    --publish 5672:5672 \
+     rabbitmq:management
 ```
 
-You can then go to `http://localhost:8080` or `http://host-ip:8080` in a browser and use `user`/`password` to gain access to the management console
+You can then go to `http://localhost:15672` or `http://host-ip:15672` in a browser and use `user`/`password` to gain access to the [management UI](https://www.rabbitmq.com/docs/management).
 
 ### Setting default vhost
 
@@ -142,7 +178,7 @@ For example, you can provide the cookie via a file (such as with [Docker Secrets
 docker service create ... --secret source=my-erlang-cookie,target=/var/lib/rabbitmq/.erlang.cookie ... rabbitmq
 ```
 
-(Note that it will likely also be necessary to specify `uid=XXX,gid=XXX,mode=0600` in order for Erlang in the container to be able to read the cookie file properly. See [Docker's `--secret` documentation for more details](https://docs.docker.com/engine/reference/commandline/service_create/#create-a-service-with-secrets).)
+(Note that it will likely also be necessary to specify `uid=XXX,gid=XXX,mode=0600` in order for Erlang in the container to be able to read the cookie file properly. See [Docker's `--secret` documentation for more details](https://docs.docker.com/reference/cli/docker/service/create/#secret).)
 
 ### Management Plugin
 

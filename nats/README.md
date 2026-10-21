@@ -28,35 +28,54 @@ WARNING:
 
 ## Simple Tags
 
--	[`2.10.14-alpine3.19`, `2.10-alpine3.19`, `2-alpine3.19`, `alpine3.19`, `2.10.14-alpine`, `2.10-alpine`, `2-alpine`, `alpine`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/alpine3.19/Dockerfile)
--	[`2.10.14-scratch`, `2.10-scratch`, `2-scratch`, `scratch`, `2.10.14-linux`, `2.10-linux`, `2-linux`, `linux`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/scratch/Dockerfile)
--	[`2.10.14-windowsservercore-1809`, `2.10-windowsservercore-1809`, `2-windowsservercore-1809`, `windowsservercore-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/windowsservercore-1809/Dockerfile)
--	[`2.10.14-nanoserver-1809`, `2.10-nanoserver-1809`, `2-nanoserver-1809`, `nanoserver-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/nanoserver-1809/Dockerfile)
--	[`2.9.25-alpine3.18`, `2.9-alpine3.18`, `2.9.25-alpine`, `2.9-alpine`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.9.x/alpine3.18/Dockerfile)
--	[`2.9.25-scratch`, `2.9-scratch`, `2.9.25-linux`, `2.9-linux`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.9.x/scratch/Dockerfile)
--	[`2.9.25-windowsservercore-1809`, `2.9-windowsservercore-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.9.x/windowsservercore-1809/Dockerfile)
--	[`2.9.25-nanoserver-1809`, `2.9-nanoserver-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.9.x/nanoserver-1809/Dockerfile)
+-	[`2.15.1-alpine3.22`, `2.15-alpine3.22`, `2-alpine3.22`, `alpine3.22`, `2.15.1-alpine`, `2.15-alpine`, `2-alpine`, `alpine`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/alpine3.22/Dockerfile)
+
+-	[`2.15.1-scratch`, `2.15-scratch`, `2-scratch`, `scratch`, `2.15.1-linux`, `2.15-linux`, `2-linux`, `linux`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/scratch/Dockerfile)
+
+-	[`2.15.1-windowsservercore-ltsc2022`, `2.15-windowsservercore-ltsc2022`, `2-windowsservercore-ltsc2022`, `windowsservercore-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/windowsservercore-ltsc2022/Dockerfile)
+
+-	[`2.15.1-nanoserver-ltsc2022`, `2.15-nanoserver-ltsc2022`, `2-nanoserver-ltsc2022`, `nanoserver-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/nanoserver-ltsc2022/Dockerfile)
+
+-	[`2.14.8-alpine3.22`, `2.14-alpine3.22`, `2.14.8-alpine`, `2.14-alpine`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/alpine3.22/Dockerfile)
+
+-	[`2.14.8-scratch`, `2.14-scratch`, `2.14.8-linux`, `2.14-linux`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/scratch/Dockerfile)
+
+-	[`2.14.8-windowsservercore-ltsc2022`, `2.14-windowsservercore-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/windowsservercore-ltsc2022/Dockerfile)
+
+-	[`2.14.8-nanoserver-ltsc2022`, `2.14-nanoserver-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/nanoserver-ltsc2022/Dockerfile)
 
 ## Shared Tags
 
--	`2.10.14`, `2.10`, `2`, `latest`:
-	-	[`2.10.14-scratch`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/scratch/Dockerfile)
-	-	[`2.10.14-nanoserver-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/nanoserver-1809/Dockerfile)
--	`2.10.14-windowsservercore`, `2.10-windowsservercore`, `2-windowsservercore`, `windowsservercore`:
-	-	[`2.10.14-windowsservercore-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/windowsservercore-1809/Dockerfile)
--	`2.10.14-nanoserver`, `2.10-nanoserver`, `2-nanoserver`, `nanoserver`:
-	-	[`2.10.14-nanoserver-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.10.x/nanoserver-1809/Dockerfile)
--	`2.9.25`, `2.9`:
-	-	[`2.9.25-scratch`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.9.x/scratch/Dockerfile)
--	`2.9.25-windowsservercore`, `2.9-windowsservercore`:
-	-	[`2.9.25-windowsservercore-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.9.x/windowsservercore-1809/Dockerfile)
--	`2.9.25-nanoserver`, `2.9-nanoserver`:
-	-	[`2.9.25-nanoserver-1809`](https://github.com/nats-io/nats-docker/blob/b39950ece3064f20a2a5e25806d093793e455769/2.9.x/nanoserver-1809/Dockerfile)
+-	`2.15.1`, `2.15`, `2`, `latest`:
+
+	-	[`2.15.1-scratch`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/scratch/Dockerfile)
+	-	[`2.15.1-nanoserver-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/nanoserver-ltsc2022/Dockerfile)
+
+-	`2.15.1-windowsservercore`, `2.15-windowsservercore`, `2-windowsservercore`, `windowsservercore`:
+
+	-	[`2.15.1-windowsservercore-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/windowsservercore-ltsc2022/Dockerfile)
+
+-	`2.15.1-nanoserver`, `2.15-nanoserver`, `2-nanoserver`, `nanoserver`:
+
+	-	[`2.15.1-nanoserver-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.15.x/nanoserver-ltsc2022/Dockerfile)
+
+-	`2.14.8`, `2.14`:
+
+	-	[`2.14.8-scratch`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/scratch/Dockerfile)
+	-	[`2.14.8-nanoserver-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/nanoserver-ltsc2022/Dockerfile)
+
+-	`2.14.8-windowsservercore`, `2.14-windowsservercore`:
+
+	-	[`2.14.8-windowsservercore-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/windowsservercore-ltsc2022/Dockerfile)
+
+-	`2.14.8-nanoserver`, `2.14-nanoserver`:
+
+	-	[`2.14.8-nanoserver-ltsc2022`](https://github.com/nats-io/nats-docker/blob/57332cb1aea214fbf8aca7683ffae4c5751c0409/2.14.x/nanoserver-ltsc2022/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/nats-io/nats-docker/issues](https://github.com/nats-io/nats-docker/issues?q=)
+	[https://github.com/nats-io/nats-docker/issues](https://github.com/nats-io/nats-docker/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/nats/), [`arm32v6`](https://hub.docker.com/r/arm32v6/nats/), [`arm32v7`](https://hub.docker.com/r/arm32v7/nats/), [`arm64v8`](https://hub.docker.com/r/arm64v8/nats/), [`ppc64le`](https://hub.docker.com/r/ppc64le/nats/), [`s390x`](https://hub.docker.com/r/s390x/nats/), [`windows-amd64`](https://hub.docker.com/r/winamd64/nats/)
@@ -101,16 +120,29 @@ WARNING:
 #
 #   docker run -p 5555:4444 nats -p 4444
 #
+# To enable NATS JetStream, use the -js flag:
+#
+#   docker run -p 4222:4222 nats -js
+#
+# And, to persist JetStream data to a volume you can use the -v and -sd flags.
+# Keep in mind that -v is a Docker flag, while -js and -sd are NATS Server flags:
+#
+#   docker run -p 4222:4222 -v nats:/data nats -js -sd /data
+#
 # Check "docker run" for more information.
 
-$ docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
+# To make it easy for other containers (such as additional cluster nodes) to
+# reach this server by name, create a user-defined network first.
+$ docker network create nats
+
+$ docker run -d --name nats-main --network nats -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
 [INF] Starting nats-server
 [INF]   Version:  2.9.8
 [INF]   Git:      [60e335a]
 [INF]   Cluster:  my_cluster
 [INF]   Name:     NB3YN6SPZF6MWTLPGYLRE2AD5VVWSW443RO43YR5GC62I463QPYGOL5C
 [INF]   ID:       NB3YN6SPZF6MWTLPGYLRE2AD5VVWSW443RO43YR5GC62I463QPYGOL5C
-[INF] Using configuration file: /etc/nats/nats-server.conf
+[INF] Using configuration file: nats-server.conf
 [INF] Starting http monitor on 0.0.0.0:8222
 [INF] Listening for client connections on 0.0.0.0:4222
 [INF] Server is ready
@@ -121,11 +153,14 @@ $ docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
 # To run a second server and cluster them together..
 # Note that since you are passing arguments, this overrides the CMD section
 # of the Dockerfile, so you need to pass all arguments, including the
-# config file.
-$ docker run -d --name=nats-2 --link nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats -c /etc/nats/nats-server.conf --routes=nats-route://ruser:T0pS3cr3t@nats-main:6222
+# config file. In the default image the config file is /nats-server.conf
+# (in the -alpine variant it is /etc/nats/nats-server.conf).
+# The host ports are already published by nats-main, so they are not
+# published again here; both containers talk over the "nats" network.
+$ docker run -d --name=nats-2 --network nats nats -c /nats-server.conf --routes=nats-route://ruser:T0pS3cr3t@nats-main:6222
 
 # If you want to verify the routes are connected, try this instead:
-$ docker run -d --name=nats-2 --link nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats -c /etc/nats/nats-server.conf --routes=nats-route://ruser:T0pS3cr3t@nats-main:6222 -DV
+$ docker run -d --name=nats-2 --network nats nats -c /nats-server.conf --routes=nats-route://ruser:T0pS3cr3t@nats-main:6222 -DV
 [INF] Starting nats-server
 [INF]   Version:  2.9.8
 [INF]   Git:      [60e335a]
@@ -133,7 +168,7 @@ $ docker run -d --name=nats-2 --link nats-main -p 4222:4222 -p 6222:6222 -p 8222
 [INF]   Cluster:  my_cluster
 [INF]   Name:     NDFNAUTD4RKS2O7CMKMDMTV3DW5NIKFCQDDMXW2A5YXLUZWWX7RYFCKB
 [INF]   ID:       NDFNAUTD4RKS2O7CMKMDMTV3DW5NIKFCQDDMXW2A5YXLUZWWX7RYFCKB
-[INF] Using configuration file: /etc/nats/nats-server.conf
+[INF] Using configuration file: /nats-server.conf
 [DBG] Created system account: "$SYS"
 [INF] Starting http monitor on 0.0.0.0:8222
 [INF] Listening for client connections on 0.0.0.0:4222
@@ -150,7 +185,7 @@ $ docker run -d --name=nats-2 --link nats-main -p 4222:4222 -p 6222:6222 -p 8222
 [DBG] 172.17.0.3:6222 - rid:4 - Sent local subscriptions to route
 ```
 
-The server will load the configuration file below. Any command line flags can override these values.
+The server will load the configuration file below (`/nats-server.conf` in the default image, `/etc/nats/nats-server.conf` in the `-alpine` variant). Any command line flags can override these values.
 
 ## Default Configuration File
 
@@ -255,24 +290,21 @@ The `nats` images come in many flavors, each designed for a specific use case.
 
 ## `nats:<version>`
 
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
+This is the default image. If you are unsure about what your needs are, you probably want to use this one. It is built `FROM scratch` and contains only the statically linked `nats-server` binary and a default configuration at `/nats-server.conf`, which makes it the smallest variant. It has no shell or other tools, so use one of the other variants if you need to `exec` into the container or install additional software.
 
 ## `nats:<version>-alpine`
 
-This image is based on the popular [Alpine Linux project](https://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
+This image is based on the popular [Alpine Linux project](https://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Unlike the default image, it includes a shell and the `apk` package manager, at the cost of a larger image. The default configuration is at `/etc/nats/nats-server.conf`.
 
-This variant is useful when final image size being as small as possible is your primary concern. The main caveat to note is that it does use [musl libc](https://musl.libc.org) instead of [glibc and friends](https://www.etalabs.net/compare_libcs.html), so software will often run into issues depending on the depth of their libc requirements/assumptions. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
+This variant uses [musl libc](https://musl.libc.org), but `nats-server` itself is statically linked, so this rarely matters unless you add other software on top. To keep the image small, it is uncommon for additional related tools (such as `git` or `bash`) to be included; add what you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 ## `nats:<version>-windowsservercore`
 
-This image is based on [Windows Server Core (`microsoft/windowsservercore`)](https://hub.docker.com/r/microsoft/windowsservercore/). As such, it only works in places which that image does, such as Windows 10 Professional/Enterprise (Anniversary Edition) or Windows Server 2016.
+This image is based on [Windows Server Core (`mcr.microsoft.com/windows/servercore`)](https://hub.docker.com/r/microsoft/windows-servercore). As such, it only works in places which that image does, such as Windows 10 Professional/Enterprise (Anniversary Edition) or Windows Server 2016.
 
 For information about how to get Docker running on Windows, please see the relevant "Quick Start" guide provided by Microsoft:
 
--	[Windows Server Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_server)
--	[Windows 10 Quick Start](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_10)
+-	[Windows Containers Quick Start](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce)
 
 # License
 

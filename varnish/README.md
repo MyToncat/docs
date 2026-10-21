@@ -24,24 +24,19 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`fresh`, `7.5.0`, `7.5`, `latest`](https://github.com/varnish/docker-varnish/blob/0cbc46e59728598b7bb0f537206ce00af6dd9203/fresh/debian/Dockerfile)
--	[`fresh-alpine`, `7.5.0-alpine`, `7.5-alpine`, `alpine`](https://github.com/varnish/docker-varnish/blob/0cbc46e59728598b7bb0f537206ce00af6dd9203/fresh/alpine/Dockerfile)
--	[`old`, `7.4.3`, `7.4`](https://github.com/varnish/docker-varnish/blob/185f6f8ec644d59c896861944a1385c09e2abfbe/old/debian/Dockerfile)
--	[`old-alpine`, `7.4.3-alpine`, `7.4-alpine`](https://github.com/varnish/docker-varnish/blob/185f6f8ec644d59c896861944a1385c09e2abfbe/old/alpine/Dockerfile)
--	[`stable`, `6.0.13`, `6.0`](https://github.com/varnish/docker-varnish/blob/185f6f8ec644d59c896861944a1385c09e2abfbe/stable/debian/Dockerfile)
--	[`7.4.2`](https://github.com/varnish/docker-varnish/blob/0c295b528f28a98650fb2580eab6d34b30b165c4/fresh/debian/Dockerfile)
--	[`7.4.2-alpine`](https://github.com/varnish/docker-varnish/blob/5644d31e8fa5bc78e764e8604ffa17c47528f5e3/fresh/alpine/Dockerfile)
--	[`7.3.1`, `7.3`](https://github.com/varnish/docker-varnish/blob/0c295b528f28a98650fb2580eab6d34b30b165c4/old/debian/Dockerfile)
--	[`7.3.1-alpine`, `7.3-alpine`](https://github.com/varnish/docker-varnish/blob/5644d31e8fa5bc78e764e8604ffa17c47528f5e3/old/alpine/Dockerfile)
--	[`6.0.12`](https://github.com/varnish/docker-varnish/blob/0c295b528f28a98650fb2580eab6d34b30b165c4/stable/debian/Dockerfile)
+-	[`fresh`, `latest`, `9.1.0-2`, `9.1.0`, `9.1`, `9`](https://github.com/varnish/docker-varnish/blob/e22ef74d6d17c811709290e58844caf90e34a3db/fresh/debian/Dockerfile)
+
+-	[`old`, `9.0.4-5`, `9.0.4`, `9.0`](https://github.com/varnish/docker-varnish/blob/bbf9c9fc658b1c61da64e1bfe82a50b20d4e66b5/old/debian/Dockerfile)
+
+-	[`stable`, `6.0.18-1`, `6.0.18`, `6.0`, `6`](https://github.com/varnish/docker-varnish/blob/c9eabe6cdbfbf5f5c2ee9959f42d926cbcc234c1/stable/debian/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/varnish/docker-varnish/issues](https://github.com/varnish/docker-varnish/issues?q=)
+	[https://github.com/varnish/docker-varnish/issues](https://github.com/varnish/docker-varnish/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/varnish/), [`arm32v7`](https://hub.docker.com/r/arm32v7/varnish/), [`arm64v8`](https://hub.docker.com/r/arm64v8/varnish/), [`i386`](https://hub.docker.com/r/i386/varnish/), [`ppc64le`](https://hub.docker.com/r/ppc64le/varnish/), [`s390x`](https://hub.docker.com/r/s390x/varnish/)
+	[`amd64`](https://hub.docker.com/r/amd64/varnish/), [`arm64v8`](https://hub.docker.com/r/arm64v8/varnish/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/varnish/` directory](https://github.com/docker-library/repo-info/blob/master/repos/varnish) ([history](https://github.com/docker-library/repo-info/commits/master/repos/varnish))  
@@ -64,37 +59,51 @@ Varnish is an HTTP accelerator designed for content-heavy dynamic web sites as w
 
 # How to use this image.
 
+```console
+$ docker run -p 8080:80 --ulimit memlock=-1:-1 --tmpfs /var/lib/varnish/varnishd:exec varnish
+```
+
+You can then visit [http://localhost:8080](http://localhost:8080) with your browser and be greeted by the default landing page.
+
+**Note:** while the `--ulimit` and `--tmpfs` options aren't necessary, they are greatly recommended. More details are available at the end of this page.
+
 ## Basic usage
 
-### Using `VARNISH_BACKEND_HOST` and `VARNISH_BACKEND_PORT`
+### Simple cache
 
-You just need to know where your backend (the server that Varnish will accelerate) is:
+The default Varnish configuration will read the `VARNISH_BACKEND_HOST` environment variable which should be an HTTP or HTTPS URL, for example:
 
 ```console
-# we define VARNISH_BACKEND_HOST/VARNISH_BACKEND_PORT
-# our workdir has to be mounted as tmpfs to avoid disk I/O,
-# and we'll use port 8080 to talk to our container (internally listening on 80)
 $ docker run \
-    -e VARNISH_BACKEND_HOST=example.com -e VARNISH_BACKEND_PORT=80 \
+	--ulimit memlock=-1:-1 \
 	--tmpfs /var/lib/varnish/varnishd:exec \
 	-p 8080:80 \
+	-e VARNISH_BACKEND_HOST=https://example.com/ \
 	varnish
 ```
 
-From there, you can visit `localhost:8080` in your browser and see the example.com homepage.
+By default, Varnish is extremely careful regarding what it can and cannot cache by looking at the [client request](https://www.varnish-software.com/developers/tutorials/varnish-builtin-vcl/#1-vcl_recv) and at the [backend response](https://www.varnish-software.com/developers/tutorials/varnish-builtin-vcl/#11-vcl_backend_response).
 
-### Using a VCL file
+Notably, Varnish will not cache if:
+
+-	the request is not a `GET` or `HEAD`
+-	the request contains an `Authorization` or `Cookie` header
+-	the response status is not cacheable (i.e., not a 2xx or 4xx response)
+-	the response contains a `Set-Cookie` header
+-	the response contains headers indicating it is uncacheable
+
+These rules can, of course, be overridden by providing your own `VCL` file, as explained in the next section.
+
+### Custom caching logic
 
 If you already have a VCL file, you can directly mount it as `/etc/varnish/default.vcl`:
 
 ```console
-# we need the configuration file at /etc/varnish/default.vcl,
-# our workdir has to be mounted as tmpfs to avoid disk I/O,
-# and we'll use port 8080 to talk to our container (internally listening on 80)
 $ docker run \
-	-v /path/to/default.vcl:/etc/varnish/default.vcl:ro \
+	--ulimit memlock=-1:-1 \
 	--tmpfs /var/lib/varnish/varnishd:exec \
 	-p 8080:80 \
+	-v /path/to/default.vcl:/etc/varnish/default.vcl:ro \
 	varnish
 ```
 
@@ -109,12 +118,16 @@ COPY default.vcl /etc/varnish/
 Place this file in the same directory as your `default.vcl`, run `docker build -t my-varnish .`, then start your container:
 
 ```console
-$ docker --tmpfs /var/lib/varnish/varnishd:exec -p 8080:80 my-varnish
+$ docker \
+	--ulimit memlock=-1:-1 \
+	--tmpfs /var/lib/varnish/varnishd:exec \
+	-p 8080:80 \
+	my-varnish
 ```
 
 ## Reloading the configuration
 
-The images all ship with [varnishreload](https://github.com/varnishcache/pkg-varnish-cache/blob/master/systemd/varnishreload#L42) which allows you to easily update the running configuration without restarting the container (and therefore losing your cache). At its most basic, you just need this:
+The images all ship with [varnishreload](https://github.com/varnish/all-packager/blob/809d3c098d1cb84d1b85e18573121a3a3720c898/varnish/systemd/varnishreload#L48-L82) which allows you to easily update the running configuration without restarting the container (and therefore losing your cache). At its most basic, you just need this:
 
 ```console
 # update the default.vcl in your container
@@ -123,15 +136,39 @@ docker cp new_default.vcl running_container:/etc/varnish/default.vcl
 docker exec running_container varnishreload
 ```
 
-Note that `varnishreload` also supports reloading other files (it doesn't have to be `default.vcl`), labels (`l`), and garbage collection of old labeles (`-m`) among others. To know more, run
+Note that `varnishreload` also supports reloading other files (it doesn't have to be `default.vcl`), labels (`-l`), and garbage collection of old labels (`-m`), among others. To learn more, run
 
 ```console
-docker run varnish varnishreload -h
+$ docker run --rm varnish varnishreload -h
 ```
 
-## Additional configuration
+## File server
 
-### Cache size (VARNISH_SIZE)
+Using the included [vmod-fileserver](https://github.com/varnish-rs/vmod-fileserver), Varnish can be used as a file server. Just mount the directory you want to expose into the `/var/www/html` directory and set the `VARNISH_FILESERVER` variable to `true`:
+
+```console
+$ docker run \
+	--ulimit memlock=-1:-1 \
+	--tmpfs /var/lib/varnish/varnishd:exec \
+	-p 8080:80 \
+	-v /dir/to/expose:/var/www/html:ro \
+	-e VARNISH_FILESERVER=true \
+	varnish
+```
+
+**Note:** Varnish will reply with an empty 200 when trying to access folders instead of individual files.
+
+## Environment variables
+
+### Backend address (`VARNISH_BACKEND_HOST`)
+
+Set the backend address and protocol as explained above. This only works with the provided `VCL`, i.e. if you don't mount an `/etc/varnish/default.vcl` file, and if you don't set `VARNISH_VCL_FILE`
+
+### File server mode (`VARNISH_FILESERVER`)
+
+Also only valid with the default `VCL`. If `VARNISH_BACKEND_HOST` is unset and `VARNISH_FILESERVER` is set, Varnish will act as a server, using `/var/www/html` as its source.
+
+### Cache size (`VARNISH_SIZE`)
 
 By default, the containers will use a cache size of 100MB, which is usually a bit too small, but you can quickly set it through the `VARNISH_SIZE` environment variable:
 
@@ -139,22 +176,30 @@ By default, the containers will use a cache size of 100MB, which is usually a bi
 $ docker run --tmpfs /var/lib/varnish/varnishd:exec -p 8080:80 -e VARNISH_SIZE=2G varnish
 ```
 
-### Listening ports (VARNISH_HTTP_PORT/VARNISH_PROXY_PORT)
+### Listening ports (`VARNISH_HTTP_PORT`/`VARNISH_PROXY_PORT`)
 
-Varnish will listen to HTTP traffic on port `80`, and this can be overridden by setting the environment variable `VARNISH_HTTP_PORT`. Similarly, the variable `VARNISH_PROXY_PORT` (defaulting to `8443`) dictate the listening port for the [PROXY protocol](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) used notably to interact with [hitch](https://hub.docker.com/_/hitch) (which, coincidentally, uses `8443` as a default too!).
+Varnish will listen to HTTP traffic on port `80`, and this can be overridden by setting the environment variable `VARNISH_HTTP_PORT`. Similarly, the variable `VARNISH_PROXY_PORT` (defaulting to `8443`) dictates the listening port for the [PROXY protocol](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) used notably to interact with [hitch](https://hub.docker.com/_/hitch) (which, coincidentally, uses `8443` as a default too!).
 
 ```console
-# instruct varnish to listening to port 7777 instead of 80
+# instruct varnish to listen on port 7777 instead of 80
 $ docker run --tmpfs /var/lib/varnish/varnishd:exec -p 8080:7777 -e VARNISH_HTTP_PORT=7777 varnish
 ```
 
+### VCL file (`VARNISH_VCL_FILE`)
+
+The default Varnish configuration file is `/etc/varnish/default.vcl`, but this can be overridden with the `VARNISH_VCL_FILE` environment variable. This is useful if you want a single image that can be deployed with different configurations baked in it.
+
 ### Extra arguments
 
-Additionally, you can add arguments to `docker run` after `varnish`, if the first argument starts with a `-`, the whole list will be appendend to the [default command](https://github.com/varnish/docker-varnish/blob/master/fresh/debian/scripts/docker-varnish-entrypoint):
+Additionally, you can add arguments to `docker run` after `varnish`, if the first argument starts with a `-`, the whole list will be appended to the [default command](https://github.com/varnish/docker-varnish/blob/master/fresh/debian/scripts/docker-varnish-entrypoint):
 
 ```console
 # extend the default keep period
-$ docker run --tmpfs /var/lib/varnish/varnishd:exec -p 8080:80 -e VARNISH_SIZE=2G varnish -p default_keep=300
+$ docker run \
+	--ulimit memlock=-1:-1 \
+	--tmpfs /var/lib/varnish/varnishd:exec \
+	-p 8080:80 \
+	varnish -p default_keep=300
 ```
 
 If your first argument after `varnish` doesn't start with `-`, it will be interpreted as a command to override the default one:
@@ -170,65 +215,22 @@ $ docker run varnish varnishd -x parameter
 $ docker run varnish varnishd -F -a :8080 -b 127.0.0.1:8181 -t 600 -p feature=+http2
 ```
 
-## vmods (since 7.1)
+This can notably be used to extract logs using [varnishncsa or varnishlog](https://www.varnish-software.com/developers/tutorials/vsl-cheatsheet/), running `varnishstat -1` to extract metrics, and of course reloading the `VCL` with `varnishreload`.
 
-As mentioned above, you can use [vmod_dynamic](https://github.com/nigoroll/libvmod-dynamic) for backend resolution. The [varnish-modules](https://github.com/varnish/varnish-modules) collection is also included in the image. All the documentation regarding usage and syntax can be found in the [src/](https://github.com/varnish/varnish-modules/tree/master/src) directory of the repository.
+## Vmods
 
-On top of this, images include [install-vmod](https://github.com/varnish/toolbox/tree/master/install-vmod), a helper script to quickly download, compile and install vmods while creating your own images. Note that images set the `ENV` variable `VMOD_DEPS` to ease the task further.
+The docker image is built with a collection of "`VCL` modules" or "vmods" that extend Varnish capability.
 
-### Debian
+We've already covered `vmod-fileserver` (file backend) and `vmod-reqwest` (dynamic backends), but more are available and can be used in your custom `VCL` with `import <vmod_name>`. Please refer to the documentation of each vmod for more information.
 
-```dockerfile
-FROM varnish:7.1
+The full list can be found on the [varnish/pkg-varnish-cache repository on github](https://github.com/varnish/pkg-varnish-cache).
 
-# set the user to root, and install build dependencies
-USER root
-RUN set -e; \
-    apt-get update; \
-    apt-get -y install $VMOD_DEPS /pkgs/*.deb; \
-    \
-# install one, possibly multiple vmods
-   install-vmod https://github.com/varnish/varnish-modules/releases/download/0.20.0/varnish-modules-0.20.0.tar.gz; \
-    \
-# clean up and set the user back to varnish
-    apt-get -y purge --auto-remove $VMOD_DEPS varnish-dev; \
-    rm -rf /var/lib/apt/lists/*
-USER varnish
-```
+# ulimit and tmpfs notes
 
-### Alpine
+Varnish uses [memory-mapped files](https://docs.varnish-software.com/varnish-enterprise/installation/#the-shared-memory-log) to log and store metrics for performance reasons. Those files are constantly written to, and to get the most out of your system, you should:
 
-```dockerfile
-FROM varnish:7.1-alpine
-
-# install build dependencies
-USER root
-RUN set -e; \
-    apk add --no-cache $VMOD_DEPS; \
-    \
-# install one, possibly multiple vmods
-    install-vmod https://github.com/varnish/varnish-modules/releases/download/0.20.0/varnish-modules-0.20.0.tar.gz; \
-    \
-# clean up
-    apk del --no-network $VMOD_DEPS
-USER varnish
-```
-
-# Image Variants
-
-The `varnish` images come in many flavors, each designed for a specific use case.
-
-## `varnish:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `varnish:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](https://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is useful when final image size being as small as possible is your primary concern. The main caveat to note is that it does use [musl libc](https://musl.libc.org) instead of [glibc and friends](https://www.etalabs.net/compare_libcs.html), so software will often run into issues depending on the depth of their libc requirements/assumptions. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
+-	mount the working directory as `tmpfs` to make sure disk I/O isn't a bottleneck; that's what the `--tmpfs` switch does
+-	allow Varnish to lock those memory-mapped files so they aren't paged out by the kernel; hence the `--ulimit` switch
 
 # License
 

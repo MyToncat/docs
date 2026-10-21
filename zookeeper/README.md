@@ -24,15 +24,14 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.7.2`, `3.7`, `3.7.2-jre-11`, `3.7-jre-11`](https://github.com/31z4/zookeeper-docker/blob/dd520cb108da9eafe6914dce4e5dbd4877dd2411/3.7.2/Dockerfile)
--	[`3.7.2-jre-17`, `3.7-jre-17`](https://github.com/31z4/zookeeper-docker/blob/5076660820c73f3b119cbdd1267c25a1e29cbbf4/3.7.2/Dockerfile)
--	[`3.8.4`, `3.8`, `3.8.4-jre-17`, `3.8-jre-17`](https://github.com/31z4/zookeeper-docker/blob/ec1050affd761a7886c1f1f5d18165c19d3143e8/3.8.4/Dockerfile)
--	[`3.9.2`, `3.9`, `3.9.2-jre-17`, `3.9-jre-17`, `latest`](https://github.com/31z4/zookeeper-docker/blob/ec1050affd761a7886c1f1f5d18165c19d3143e8/3.9.2/Dockerfile)
+-	[`3.8.7`, `3.8`, `3.8.7-jre-17`, `3.8-jre-17`](https://github.com/31z4/zookeeper-docker/blob/4e8ac7d9e24ea39ac42a28218c91d819aa650f97/3.8.7/Dockerfile)
+
+-	[`3.9.6`, `3.9`, `3.9.6-jre-17`, `3.9-jre-17`, `latest`](https://github.com/31z4/zookeeper-docker/blob/4e8ac7d9e24ea39ac42a28218c91d819aa650f97/3.9.6/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/31z4/zookeeper-docker/issues](https://github.com/31z4/zookeeper-docker/issues?q=)
+	[https://github.com/31z4/zookeeper-docker/issues](https://github.com/31z4/zookeeper-docker/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/zookeeper/), [`arm64v8`](https://hub.docker.com/r/arm64v8/zookeeper/), [`ppc64le`](https://hub.docker.com/r/ppc64le/zookeeper/), [`s390x`](https://hub.docker.com/r/s390x/zookeeper/)
@@ -78,13 +77,11 @@ $ docker run --name some-app --link some-zookeeper:zookeeper -d application-that
 $ docker run -it --rm --link some-zookeeper:zookeeper zookeeper zkCli.sh -server zookeeper
 ```
 
-## ... via [`docker-compose`](https://github.com/docker/compose) or [`docker stack deploy`](https://docs.docker.com/engine/reference/commandline/stack_deploy/)
+## ... via [`docker compose`](https://github.com/docker/compose)
 
-Example `docker-compose.yml` for `zookeeper`:
+Example `compose.yaml` for `zookeeper`:
 
 ```yaml
-version: '3.1'
-
 services:
   zoo1:
     image: zookeeper
@@ -117,9 +114,7 @@ services:
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
 ```
 
-[![Try in PWD](https://github.com/play-with-docker/stacks/raw/cff22438cb4195ace27f9b15784bbb497047afa7/assets/images/button.png)](http://play-with-docker.com?stack=https://raw.githubusercontent.com/docker-library/docs/fb51d93e6bb1e8b773a728d297a45b834f04d3d1/zookeeper/stack.yml)
-
-This will start Zookeeper in [replicated mode](https://zookeeper.apache.org/doc/current/zookeeperStarted.html#sc_RunningReplicatedZooKeeper). Run `docker stack deploy -c stack.yml zookeeper` (or `docker-compose -f stack.yml up`) and wait for it to initialize completely. Ports `2181-2183` will be exposed.
+This will start Zookeeper in [replicated mode](https://zookeeper.apache.org/doc/current/zookeeperStarted.html#sc_RunningReplicatedZooKeeper). Run `docker compose up` and wait for it to initialize completely. Ports `2181-2183` will be exposed.
 
 > Please be aware that setting up multiple servers on a single machine will not create any redundancy. If something were to happen which caused the machine to die, all of the zookeeper servers would be offline. Full redundancy requires that each server have its own machine. It must be a completely separate physical server. Multiple virtual machines on the same physical host are still vulnerable to the complete failure of that host.
 

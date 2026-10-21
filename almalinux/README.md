@@ -24,10 +24,21 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`8`, `8.9`, `8.9-20240410`](https://github.com/AlmaLinux/container-images/blob/7aee1db985cc9ebb0347f2f4875f301fa4b09ab7/default/amd64/Dockerfile)
--	[`8-minimal`, `8.9-minimal`, `8.9-minimal-20240410`](https://github.com/AlmaLinux/container-images/blob/265e51205d22917cbc7c60839c131dea85296705/minimal/amd64/Dockerfile)
--	[`latest`, `9`, `9.4`, `9.4-20240506`](https://github.com/AlmaLinux/container-images/blob/35df378109dcb34fe4aa7c6105ec748bafcda307/default/amd64/Dockerfile)
--	[`minimal`, `9-minimal`, `9.4-minimal`, `9.4-minimal-20240506`](https://github.com/AlmaLinux/container-images/blob/35df378109dcb34fe4aa7c6105ec748bafcda307/minimal/amd64/Dockerfile)
+-	[`10-kitten`, `10-kitten-20261002`](https://github.com/AlmaLinux/container-images/blob/f717a3af79e360c7a2f59c6b60cb7387c9df9984/default/amd64/Dockerfile)
+
+-	[`10-kitten-minimal`, `10-kitten-minimal-20261002`](https://github.com/AlmaLinux/container-images/blob/f717a3af79e360c7a2f59c6b60cb7387c9df9984/minimal/amd64/Dockerfile)
+
+-	[`latest`, `10`, `10.2`, `10.2-20261002`](https://github.com/AlmaLinux/container-images/blob/736d358ff7c136e3e8048dd0627a329558199141/default/amd64/Dockerfile)
+
+-	[`minimal`, `10-minimal`, `10.2-minimal`, `10.2-minimal-20261002`](https://github.com/AlmaLinux/container-images/blob/736d358ff7c136e3e8048dd0627a329558199141/minimal/amd64/Dockerfile)
+
+-	[`8`, `8.10`, `8.10-20261002`](https://github.com/AlmaLinux/container-images/blob/dfec1664b46eb2ec734fd905f255c8d69f092997/default/amd64/Dockerfile)
+
+-	[`8-minimal`, `8.10-minimal`, `8.10-minimal-20261002`](https://github.com/AlmaLinux/container-images/blob/dfec1664b46eb2ec734fd905f255c8d69f092997/minimal/amd64/Dockerfile)
+
+-	[`9`, `9.8`, `9.8-20261002`](https://github.com/AlmaLinux/container-images/blob/e97d74ff43f731dcd003e70ab4e1daab9c54e0a9/default/amd64/Dockerfile)
+
+-	[`9-minimal`, `9.8-minimal`, `9.8-minimal-20261002`](https://github.com/AlmaLinux/container-images/blob/e97d74ff43f731dcd003e70ab4e1daab9c54e0a9/minimal/amd64/Dockerfile)
 
 # Quick reference (cont.)
 
@@ -35,7 +46,7 @@ WARNING:
 	[https://bugs.almalinux.org](https://bugs.almalinux.org) or [GitHub](https://github.com/AlmaLinux/docker-images/issues)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/almalinux/), [`arm64v8`](https://hub.docker.com/r/arm64v8/almalinux/), [`ppc64le`](https://hub.docker.com/r/ppc64le/almalinux/), [`s390x`](https://hub.docker.com/r/s390x/almalinux/)
+	[`amd64`](https://hub.docker.com/r/amd64/almalinux/), [`arm64v8`](https://hub.docker.com/r/arm64v8/almalinux/), [`i386`](https://hub.docker.com/r/i386/almalinux/), [`ppc64le`](https://hub.docker.com/r/ppc64le/almalinux/), [`riscv64`](https://hub.docker.com/r/riscv64/almalinux/), [`s390x`](https://hub.docker.com/r/s390x/almalinux/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/almalinux/` directory](https://github.com/docker-library/repo-info/blob/master/repos/almalinux) ([history](https://github.com/docker-library/repo-info/commits/master/repos/almalinux))  

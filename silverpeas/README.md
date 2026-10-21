@@ -24,12 +24,14 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`6.3.4`, `latest`](https://github.com/Silverpeas/docker-silverpeas-prod/blob/0ab5ec380118de3c070135446eabd3d94dfa0395/Dockerfile)
+-	[`6.4.8`, `latest`](https://github.com/Silverpeas/docker-silverpeas-prod/blob/71cf05201534b364e3871b7ccb299c5fb8027d54/Dockerfile)
+
+-	[`6.3.6`, `6.3`](https://github.com/Silverpeas/docker-silverpeas-prod/blob/fb25885d1cd43172693b3acf79e9fac056a9db34/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/Silverpeas/docker-silverpeas-prod/issues](https://github.com/Silverpeas/docker-silverpeas-prod/issues?q=)
+	[https://github.com/Silverpeas/docker-silverpeas-prod/issues](https://github.com/Silverpeas/docker-silverpeas-prod/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/silverpeas/)

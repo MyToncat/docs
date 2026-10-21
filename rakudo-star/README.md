@@ -24,13 +24,16 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`latest`, `2024.04`, `bookworm`](https://github.com/Raku/docker/blob/486b7ff7508c5dfd4b859518cdc9672ef9a5c815/2024.04/bookworm/Dockerfile)
--	[`alpine`, `2024.04-alpine`](https://github.com/Raku/docker/blob/486b7ff7508c5dfd4b859518cdc9672ef9a5c815/2024.04/alpine/Dockerfile)
+-	[`trixie`, `latest`, `2026.09-trixie`](https://github.com/rakudo/docker/blob/e6f172a9fb8769b7ec08ed8ec7451e632e719c08/2026.09/trixie/Dockerfile)
+
+-	[`bookworm`, `2026.09-bookworm`](https://github.com/rakudo/docker/blob/e6f172a9fb8769b7ec08ed8ec7451e632e719c08/2026.09/bookworm/Dockerfile)
+
+-	[`alpine`, `2026.09-alpine`](https://github.com/rakudo/docker/blob/e6f172a9fb8769b7ec08ed8ec7451e632e719c08/2026.09/alpine/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/Raku/docker/issues](https://github.com/Raku/docker/issues?q=)
+	[https://github.com/Raku/docker/issues](https://github.com/Raku/docker/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/rakudo-star/), [`arm64v8`](https://hub.docker.com/r/arm64v8/rakudo-star/)
@@ -88,7 +91,7 @@ The `rakudo-star` images come in many flavors, each designed for a specific use 
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-Some of these tags may have names like bookworm in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
+Some of these tags may have names like bookworm or trixie in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
 
 ## `rakudo-star:<version>-alpine`
 

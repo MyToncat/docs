@@ -24,14 +24,16 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`5.0`, `5.0-20240506`, `latest`](https://github.com/vmware/photon-docker-image/blob/1a711bc7cfc75e9aad9b49cf3783fb26ea83d14e/docker/Dockerfile)
--	[`4.0`, `4.0-20240512`](https://github.com/vmware/photon-docker-image/blob/79fb08b8531b574f2733dba18b7939ba32281907/docker/Dockerfile)
--	[`3.0`, `3.0-20240506`](https://github.com/vmware/photon-docker-image/blob/dbded9110b78abcc430bfdb80ef2e8027675cd26/docker/Dockerfile)
+-	[`5.0`, `5.0-20260727`, `latest`](https://github.com/vmware/photon-docker-image/blob/6d92cd0c93bcfbdb3fe09a72bdc6657f646fd012/docker/Dockerfile)
+
+-	[`4.0`, `4.0-20260930`](https://github.com/vmware/photon-docker-image/blob/9bbbd26b2971794172aca93469137a8a7b1e0ca9/docker/Dockerfile)
+
+-	[`3.0`, `3.0-20250316`](https://github.com/vmware/photon-docker-image/blob/f848d5df815c0afe76b42a608d49df0e87af51c2/docker/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/vmware/photon-docker-image/issues](https://github.com/vmware/photon-docker-image/issues?q=)
+	[https://github.com/vmware/photon-docker-image/issues](https://github.com/vmware/photon-docker-image/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/photon/), [`arm64v8`](https://hub.docker.com/r/arm64v8/photon/)
@@ -59,7 +61,7 @@ See the [FAQ](http://vmware.github.io/photon/assets/files/photon_faqs.pdf) for m
 
 ## How to use these images
 
-Photon OS images are intended for use in the **FROM** field of an application's `Dockerfile`. For example, to use VMware Photon 1.0GA as the base of an image, specify `FROM photon:1.0GA`.
+Photon OS images are intended for use in the **FROM** field of an application's `Dockerfile`. For example, to use VMware Photon OS 5.0 as the base of an image, specify `FROM photon:5.0`.
 
 ## Support
 
@@ -73,7 +75,7 @@ For more general user questions, visit the Photon OS user forum in our [Photon O
 
 # License
 
-View [license information](https://github.com/vmware/photon/blob/master/LICENSE) for the software contained in this image.
+View [license information](https://github.com/vmware/photon/blob/5.0/LICENSE.md) for the software contained in this image.
 
 As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
 

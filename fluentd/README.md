@@ -24,16 +24,15 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`v1.16.2-1.1`, `v1.16-1`, `latest`](https://github.com/fluent/fluentd-docker-image/blob/a4dd65768ec1819574e570716955276c9089326a/v1.16/alpine/Dockerfile)
--	[`v1.16.2-debian-1.1`, `v1.16-debian-1`](https://github.com/fluent/fluentd-docker-image/blob/a4dd65768ec1819574e570716955276c9089326a/v1.16/debian/Dockerfile)
+-	[`v1.19.4-debian-1.0`, `v1.19-debian-1`, `v1.19.4-1.0`, `v1.19-1`, `latest`](https://github.com/fluent/fluentd-docker-image/blob/f3b08877723cc4b5985c70d38ce3c322322248c3/v1.19/debian/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/fluent/fluentd-docker-image/issues](https://github.com/fluent/fluentd-docker-image/issues?q=)
+	[https://github.com/fluent/fluentd-docker-image/issues](https://github.com/fluent/fluentd-docker-image/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
-	[`amd64`](https://hub.docker.com/r/amd64/fluentd/), [`arm32v5`](https://hub.docker.com/r/arm32v5/fluentd/), [`arm32v6`](https://hub.docker.com/r/arm32v6/fluentd/), [`arm32v7`](https://hub.docker.com/r/arm32v7/fluentd/), [`arm64v8`](https://hub.docker.com/r/arm64v8/fluentd/), [`i386`](https://hub.docker.com/r/i386/fluentd/), [`ppc64le`](https://hub.docker.com/r/ppc64le/fluentd/), [`s390x`](https://hub.docker.com/r/s390x/fluentd/)
+	[`amd64`](https://hub.docker.com/r/amd64/fluentd/), [`arm32v5`](https://hub.docker.com/r/arm32v5/fluentd/), [`arm32v7`](https://hub.docker.com/r/arm32v7/fluentd/), [`arm64v8`](https://hub.docker.com/r/arm64v8/fluentd/), [`i386`](https://hub.docker.com/r/i386/fluentd/), [`ppc64le`](https://hub.docker.com/r/ppc64le/fluentd/), [`s390x`](https://hub.docker.com/r/s390x/fluentd/)
 
 -	**Published image artifact details**:  
 	[repo-info repo's `repos/fluentd/` directory](https://github.com/docker-library/repo-info/blob/master/repos/fluentd) ([history](https://github.com/docker-library/repo-info/commits/master/repos/fluentd))  

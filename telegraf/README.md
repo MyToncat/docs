@@ -24,17 +24,22 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.28`, `1.28.5`](https://github.com/influxdata/influxdata-docker/blob/ae8f857da748ff8fbde2090b45cc7e9a96043291/telegraf/1.28/Dockerfile)
--	[`1.28-alpine`, `1.28.5-alpine`](https://github.com/influxdata/influxdata-docker/blob/ae8f857da748ff8fbde2090b45cc7e9a96043291/telegraf/1.28/alpine/Dockerfile)
--	[`1.29`, `1.29.5`](https://github.com/influxdata/influxdata-docker/blob/ae8f857da748ff8fbde2090b45cc7e9a96043291/telegraf/1.29/Dockerfile)
--	[`1.29-alpine`, `1.29.5-alpine`](https://github.com/influxdata/influxdata-docker/blob/ae8f857da748ff8fbde2090b45cc7e9a96043291/telegraf/1.29/alpine/Dockerfile)
--	[`1.30`, `1.30.2`, `latest`](https://github.com/influxdata/influxdata-docker/blob/ae8f857da748ff8fbde2090b45cc7e9a96043291/telegraf/1.30/Dockerfile)
--	[`1.30-alpine`, `1.30.2-alpine`, `alpine`](https://github.com/influxdata/influxdata-docker/blob/ae8f857da748ff8fbde2090b45cc7e9a96043291/telegraf/1.30/alpine/Dockerfile)
+-	[`1.38`, `1.38.4`](https://github.com/influxdata/influxdata-docker/blob/e1bd979d8da910bbe2e5e336251786cb2b030ad9/telegraf/1.38/Dockerfile)
+
+-	[`1.38-alpine`, `1.38.4-alpine`](https://github.com/influxdata/influxdata-docker/blob/e1bd979d8da910bbe2e5e336251786cb2b030ad9/telegraf/1.38/alpine/Dockerfile)
+
+-	[`1.39`, `1.39.3`](https://github.com/influxdata/influxdata-docker/blob/e1bd979d8da910bbe2e5e336251786cb2b030ad9/telegraf/1.39/Dockerfile)
+
+-	[`1.39-alpine`, `1.39.3-alpine`](https://github.com/influxdata/influxdata-docker/blob/e1bd979d8da910bbe2e5e336251786cb2b030ad9/telegraf/1.39/alpine/Dockerfile)
+
+-	[`1.40`, `1.40.2`, `latest`](https://github.com/influxdata/influxdata-docker/blob/e1bd979d8da910bbe2e5e336251786cb2b030ad9/telegraf/1.40/Dockerfile)
+
+-	[`1.40-alpine`, `1.40.2-alpine`, `alpine`](https://github.com/influxdata/influxdata-docker/blob/e1bd979d8da910bbe2e5e336251786cb2b030ad9/telegraf/1.40/alpine/Dockerfile)
 
 # Quick reference (cont.)
 
 -	**Where to file issues**:  
-	[https://github.com/influxdata/influxdata-docker/issues](https://github.com/influxdata/influxdata-docker/issues?q=)
+	[https://github.com/influxdata/influxdata-docker/issues](https://github.com/influxdata/influxdata-docker/issues?q=is:issue+is:pr)
 
 -	**Supported architectures**: ([more info](https://github.com/docker-library/official-images#architectures-other-than-amd64))  
 	[`amd64`](https://hub.docker.com/r/amd64/telegraf/), [`arm32v7`](https://hub.docker.com/r/arm32v7/telegraf/), [`arm64v8`](https://hub.docker.com/r/arm64v8/telegraf/)
